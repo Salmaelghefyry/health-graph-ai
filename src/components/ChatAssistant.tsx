@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Send, X, Bot, User, Sparkles } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 interface Message {
   id: string;
@@ -27,6 +29,7 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const { toast } = useToast();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -35,36 +38,6 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-
-  const generateResponse = (userMessage: string): string => {
-    const lowerMessage = userMessage.toLowerCase();
-    
-    if (lowerMessage.includes('diabetes') && lowerMessage.includes('heart')) {
-      return "Diabetes significantly increases the risk of heart disease through multiple mechanisms. High blood sugar levels can damage blood vessels and nerves that control the heart. The medical graph shows a 60% probability connection between these conditions. Patients with diabetes are 2-4 times more likely to develop cardiovascular disease.";
-    }
-    
-    if (lowerMessage.includes('prediction') || lowerMessage.includes('risk')) {
-      if (predictions.length > 0) {
-        const topPrediction = predictions[0];
-        return `Based on the GNN analysis, the highest risk prediction is ${topPrediction.disease} with a ${Math.round(topPrediction.probability * 100)}% probability. This is determined by analyzing the weighted connections in the medical graph from your current conditions. The pathway shows: ${topPrediction.pathway.join(' → ')}.`;
-      }
-      return "To see risk predictions, please select conditions from the patient's medical history and run the analysis.";
-    }
-    
-    if (lowerMessage.includes('recommend') || lowerMessage.includes('what should')) {
-      return "Based on the current analysis, I recommend: 1) Regular cardiovascular monitoring given the risk factors, 2) HbA1c testing every 3-6 months if diabetes is present, 3) Blood pressure monitoring at home, and 4) A Mediterranean-style diet which has shown to reduce cardiovascular risk by up to 30%.";
-    }
-    
-    if (lowerMessage.includes('graph') || lowerMessage.includes('connection')) {
-      return "The medical graph visualizes disease relationships as weighted edges. Edge weights represent the probability of progression or comorbidity. For example, a weight of 0.75 between obesity and diabetes indicates a 75% increased risk correlation. The GNN model propagates signals through these connections to predict future health risks.";
-    }
-    
-    if (lowerMessage.includes('how') && lowerMessage.includes('work')) {
-      return "This platform uses a Graph Neural Network (GNN) that operates on a directed, weighted medical graph. Each node represents a disease, and edges represent relationships (progression, comorbidity, or risk factors). When you input a patient's conditions, the GNN activates those nodes and propagates signals through the graph to predict which diseases have the highest probability of occurring.";
-    }
-
-    return "I can help explain the disease predictions, describe relationships between conditions in the medical graph, or provide context for the recommendations. Could you please be more specific about what you'd like to know?";
-  };
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -77,21 +50,95 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const userInput = input;
     setInput('');
     setIsTyping(true);
 
-    // Simulate AI response delay
-    setTimeout(() => {
-      const response = generateResponse(input);
-      const assistantMessage: Message = {
+    try {
+      const chatMessages = messages
+        .filter(m => m.id !== '1')
+        .map(m => ({ role: m.role, content: m.content }));
+      chatMessages.push({ role: 'user', content: userInput });
+
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat-assistant`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
+        body: JSON.stringify({
+          messages: chatMessages,
+          predictions,
+          conditions: activeConditions,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to get response');
+      }
+
+      // Stream the response
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+      let assistantContent = '';
+      const assistantId = (Date.now() + 1).toString();
+
+      // Add empty assistant message first
+      setMessages(prev => [...prev, {
+        id: assistantId,
+        role: 'assistant',
+        content: '',
+        timestamp: new Date(),
+      }]);
+
+      while (reader) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split('\n');
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const jsonStr = line.slice(6).trim();
+            if (jsonStr === '[DONE]') continue;
+            
+            try {
+              const parsed = JSON.parse(jsonStr);
+              const content = parsed.choices?.[0]?.delta?.content;
+              if (content) {
+                assistantContent += content;
+                setMessages(prev => prev.map(m => 
+                  m.id === assistantId 
+                    ? { ...m, content: assistantContent }
+                    : m
+                ));
+              }
+            } catch {
+              // Ignore parse errors for partial chunks
+            }
+          }
+        }
+      }
+    } catch (error: any) {
+      console.error('Chat error:', error);
+      toast({
+        title: 'Chat Error',
+        description: error.message || 'Failed to get response',
+        variant: 'destructive',
+      });
+      
+      // Add error message
+      setMessages(prev => [...prev, {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: response,
+        content: "I'm sorry, I encountered an error. Please try again later.",
         timestamp: new Date(),
-      };
-      setMessages(prev => [...prev, assistantMessage]);
+      }]);
+    } finally {
       setIsTyping(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -152,12 +199,12 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
                   : 'bg-secondary text-foreground'
                 }
               `}>
-                <p className="text-sm leading-relaxed">{message.content}</p>
+                <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
               </div>
             </div>
           ))}
           
-          {isTyping && (
+          {isTyping && messages[messages.length - 1]?.content === '' && (
             <div className="flex gap-3">
               <div className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center bg-secondary">
                 <Bot className="w-4 h-4 text-primary" />
@@ -184,12 +231,13 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
               onKeyPress={(e) => e.key === 'Enter' && handleSend()}
               placeholder="Ask about predictions..."
               className="flex-1 bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+              disabled={isTyping}
             />
             <Button
               variant="glow"
               size="icon"
               onClick={handleSend}
-              disabled={!input.trim()}
+              disabled={!input.trim() || isTyping}
             >
               <Send className="w-4 h-4" />
             </Button>
