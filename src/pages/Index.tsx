@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { PatientInput } from '@/components/PatientInput';
@@ -6,6 +7,9 @@ import { DiseaseGraph } from '@/components/DiseaseGraph';
 import { PredictionResults } from '@/components/PredictionResults';
 import { Recommendations } from '@/components/Recommendations';
 import { ChatAssistant } from '@/components/ChatAssistant';
+import { useAuth } from '@/hooks/useAuth';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 interface Prediction {
   disease: string;
@@ -27,7 +31,11 @@ const Index = () => {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
+  const [patientAge, setPatientAge] = useState<number | undefined>();
   const dashboardRef = useRef<HTMLDivElement>(null);
+  const { user } = useAuth();
+  const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleGetStarted = () => {
     setShowDashboard(true);
@@ -36,114 +44,83 @@ const Index = () => {
     }, 100);
   };
 
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
+    if (activeConditions.length === 0) {
+      toast({
+        title: 'No conditions selected',
+        description: 'Please select at least one condition to analyze.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsAnalyzing(true);
-    
-    // Simulate GNN analysis
-    setTimeout(() => {
-      const newPredictions: Prediction[] = [];
-      const newRecommendations: Recommendation[] = [];
+    setPredictions([]);
+    setRecommendations([]);
 
-      // Generate predictions based on selected conditions
-      if (activeConditions.includes('diabetes')) {
-        newPredictions.push({
-          disease: 'Cardiovascular Disease',
-          probability: 0.72,
-          risk: 'high',
-          pathway: ['Diabetes Type 2', 'Atherosclerosis', 'Heart Disease'],
-        });
-        newPredictions.push({
-          disease: 'Diabetic Nephropathy',
-          probability: 0.55,
-          risk: 'medium',
-          pathway: ['Diabetes Type 2', 'Kidney Disease'],
-        });
-        newRecommendations.push({
-          type: 'test',
-          title: 'HbA1c Test',
-          description: 'Schedule regular HbA1c testing every 3 months to monitor blood sugar control.',
-          priority: 'high',
-        });
-      }
-
-      if (activeConditions.includes('hypertension')) {
-        newPredictions.push({
-          disease: 'Stroke',
-          probability: 0.65,
-          risk: 'high',
-          pathway: ['Hypertension', 'Atherosclerosis', 'Stroke'],
-        });
-        newRecommendations.push({
-          type: 'lifestyle',
-          title: 'Blood Pressure Monitoring',
-          description: 'Monitor blood pressure daily at home and maintain a log for your healthcare provider.',
-          priority: 'high',
-        });
-        newRecommendations.push({
-          type: 'diet',
-          title: 'DASH Diet',
-          description: 'Follow the DASH diet to help lower blood pressure naturally.',
-          priority: 'medium',
-        });
-      }
-
-      if (activeConditions.includes('obesity')) {
-        newPredictions.push({
-          disease: 'Type 2 Diabetes',
-          probability: 0.68,
-          risk: 'high',
-          pathway: ['Obesity', 'Insulin Resistance', 'Diabetes Type 2'],
-        });
-        newPredictions.push({
-          disease: 'Sleep Apnea',
-          probability: 0.58,
-          risk: 'medium',
-          pathway: ['Obesity', 'Sleep Apnea'],
-        });
-        newRecommendations.push({
-          type: 'lifestyle',
-          title: 'Weight Management Program',
-          description: 'Aim for 5-10% weight loss through a combination of diet and exercise.',
-          priority: 'high',
-        });
-      }
-
-      if (activeConditions.includes('sleep_apnea')) {
-        newPredictions.push({
-          disease: 'Hypertension',
-          probability: 0.52,
-          risk: 'medium',
-          pathway: ['Sleep Apnea', 'Hypertension'],
-        });
-        newRecommendations.push({
-          type: 'test',
-          title: 'Sleep Study',
-          description: 'Consider a polysomnography to assess sleep apnea severity.',
-          priority: 'medium',
-        });
-      }
-
-      // Add general recommendations
-      newRecommendations.push({
-        type: 'prevention',
-        title: 'Regular Check-ups',
-        description: 'Schedule comprehensive health screenings every 6-12 months.',
-        priority: 'medium',
-      });
-      newRecommendations.push({
-        type: 'diet',
-        title: 'Mediterranean Diet',
-        description: 'Adopt a Mediterranean-style diet rich in vegetables, whole grains, and healthy fats.',
-        priority: 'low',
+    try {
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/predict-diseases`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
+        body: JSON.stringify({
+          conditions: activeConditions,
+          patientAge,
+        }),
       });
 
-      // Sort predictions by probability
-      newPredictions.sort((a, b) => b.probability - a.probability);
-      
-      setPredictions(newPredictions);
-      setRecommendations(newRecommendations);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to analyze');
+      }
+
+      const data = await response.json();
+      console.log('Prediction response:', data);
+
+      // Map API response to component format
+      const mappedPredictions: Prediction[] = (data.predictions || []).map((p: any) => ({
+        disease: p.disease,
+        probability: p.probability / 100,
+        risk: p.riskLevel?.toLowerCase() || 'medium',
+        pathway: p.pathway ? p.pathway.split(' → ') : [],
+      }));
+
+      const mappedRecommendations: Recommendation[] = (data.recommendations || []).map((r: any) => ({
+        type: r.type || 'prevention',
+        title: r.title,
+        description: r.description,
+        priority: r.priority?.toLowerCase() || 'medium',
+      }));
+
+      setPredictions(mappedPredictions);
+      setRecommendations(mappedRecommendations);
+
+      // Save to history if user is logged in
+      if (user) {
+        await supabase.from('prediction_history').insert({
+          user_id: user.id,
+          conditions: activeConditions,
+          predictions: data.predictions || [],
+          recommendations: data.recommendations || [],
+        });
+      }
+
+      toast({
+        title: 'Analysis Complete',
+        description: `Found ${mappedPredictions.length} potential risk factors.`,
+      });
+    } catch (error: any) {
+      console.error('Analysis error:', error);
+      toast({
+        title: 'Analysis Failed',
+        description: error.message || 'Please try again later.',
+        variant: 'destructive',
+      });
+    } finally {
       setIsAnalyzing(false);
-    }, 2500);
+    }
   };
 
   return (
@@ -164,6 +141,13 @@ const Index = () => {
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Enter patient information and medical history to activate the disease graph and receive AI-powered predictions.
               </p>
+              {!user && (
+                <p className="text-sm text-primary mt-2">
+                  <button onClick={() => navigate('/auth')} className="underline hover:no-underline">
+                    Sign in
+                  </button> to save your predictions and track your health over time.
+                </p>
+              )}
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -172,6 +156,7 @@ const Index = () => {
                 <PatientInput 
                   onConditionsChange={setActiveConditions}
                   onAnalyze={handleAnalyze}
+                  onAgeChange={setPatientAge}
                 />
               </div>
 

@@ -5,6 +5,7 @@ import { Activity, Plus, X, User, Calendar, FileText } from 'lucide-react';
 interface PatientInputProps {
   onConditionsChange: (conditions: string[]) => void;
   onAnalyze: () => void;
+  onAgeChange?: (age: number | undefined) => void;
 }
 
 const availableConditions = [
@@ -20,7 +21,7 @@ const availableConditions = [
   { id: 'atherosclerosis', name: 'Atherosclerosis', category: 'Cardiovascular' },
 ];
 
-export const PatientInput = ({ onConditionsChange, onAnalyze }: PatientInputProps) => {
+export const PatientInput = ({ onConditionsChange, onAnalyze, onAgeChange }: PatientInputProps) => {
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const [patientName, setPatientName] = useState('');
   const [patientAge, setPatientAge] = useState('');
@@ -67,7 +68,10 @@ export const PatientInput = ({ onConditionsChange, onAnalyze }: PatientInputProp
             <input
               type="number"
               value={patientAge}
-              onChange={(e) => setPatientAge(e.target.value)}
+              onChange={(e) => {
+                setPatientAge(e.target.value);
+                onAgeChange?.(e.target.value ? parseInt(e.target.value) : undefined);
+              }}
               placeholder="Enter age"
               className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
             />
