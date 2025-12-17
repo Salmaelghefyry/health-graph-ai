@@ -1,0 +1,95 @@
+import { TestTube, Heart, Pill, Utensils, Activity } from 'lucide-react';
+
+interface Recommendation {
+  type: 'test' | 'lifestyle' | 'prevention' | 'diet';
+  title: string;
+  description: string;
+  priority: 'high' | 'medium' | 'low';
+}
+
+interface RecommendationsProps {
+  recommendations: Recommendation[];
+}
+
+const iconMap = {
+  test: TestTube,
+  lifestyle: Activity,
+  prevention: Pill,
+  diet: Utensils,
+};
+
+const typeLabels = {
+  test: 'Medical Test',
+  lifestyle: 'Lifestyle Change',
+  prevention: 'Prevention',
+  diet: 'Dietary Advice',
+};
+
+export const Recommendations = ({ recommendations }: RecommendationsProps) => {
+  if (recommendations.length === 0) {
+    return (
+      <div className="glass-effect rounded-xl p-8 flex flex-col items-center justify-center min-h-[200px] text-center">
+        <Heart className="w-12 h-12 text-primary/50 mb-4" />
+        <h3 className="font-display text-lg font-semibold mb-2">Recommendations</h3>
+        <p className="text-muted-foreground text-sm max-w-sm">
+          Personalized recommendations will appear here after analysis.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center gap-2 mb-4">
+        <Heart className="w-5 h-5 text-primary" />
+        <h3 className="font-display font-semibold text-lg">Personalized Recommendations</h3>
+      </div>
+
+      <div className="grid gap-3">
+        {recommendations.map((rec, index) => {
+          const Icon = iconMap[rec.type];
+          return (
+            <div
+              key={index}
+              className="glass-effect rounded-xl p-4 animate-fade-in-up hover:border-primary/30 transition-all duration-300"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="flex items-start gap-3">
+                <div className={`
+                  p-2 rounded-lg shrink-0
+                  ${rec.priority === 'high' ? 'bg-destructive/20' : ''}
+                  ${rec.priority === 'medium' ? 'bg-warning/20' : ''}
+                  ${rec.priority === 'low' ? 'bg-success/20' : ''}
+                `}>
+                  <Icon className={`
+                    w-5 h-5
+                    ${rec.priority === 'high' ? 'text-destructive' : ''}
+                    ${rec.priority === 'medium' ? 'text-warning' : ''}
+                    ${rec.priority === 'low' ? 'text-success' : ''}
+                  `} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <h4 className="font-display font-semibold text-foreground">{rec.title}</h4>
+                    <span className="text-xs px-2 py-0.5 bg-secondary rounded-full text-muted-foreground">
+                      {typeLabels[rec.type]}
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{rec.description}</p>
+                </div>
+                <div className={`
+                  px-2 py-1 rounded text-xs font-medium uppercase tracking-wider shrink-0
+                  ${rec.priority === 'high' ? 'bg-destructive/20 text-destructive' : ''}
+                  ${rec.priority === 'medium' ? 'bg-warning/20 text-warning' : ''}
+                  ${rec.priority === 'low' ? 'bg-success/20 text-success' : ''}
+                `}>
+                  {rec.priority}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
