@@ -23,32 +23,105 @@ export interface Translations {
       recommendations: { title: string; description: string };
     };
   };
-  // Patient form
-  patient: {
-    title: string;
+  // Detailed Form
+  form: {
     personalInfo: string;
-    name: string;
-    namePlaceholder: string;
+    fullName: string;
+    enterName: string;
     age: string;
-    agePlaceholder: string;
-    gender: string;
+    years: string;
+    sex: string;
     male: string;
     female: string;
+    pregnant: string;
+    menopause: string;
+    lifestyle: string;
+    smokingStatus: string;
+    never: string;
+    former: string;
+    current: string;
+    cigarettesPerDay: string;
+    alcoholConsumption: string;
+    none: string;
+    occasional: string;
+    moderate: string;
+    heavy: string;
+    physicalActivity: string;
+    sedentary: string;
+    light: string;
+    moderateActivity: string;
+    active: string;
     vitalSigns: string;
     bloodPressure: string;
     systolic: string;
     diastolic: string;
     heartRate: string;
     bpm: string;
-    cholesterol: string;
-    bloodSugar: string;
-    mgdl: string;
+    physicalMeasurements: string;
+    weight: string;
+    height: string;
+    bmi: string;
+    waistCircumference: string;
+    bmiCategories: {
+      underweight: string;
+      normal: string;
+      overweight: string;
+      obese: string;
+    };
+    labValues: string;
+    glucoseMetabolism: string;
+    fastingBloodSugar: string;
+    hba1c: string;
+    lipidProfile: string;
+    totalCholesterol: string;
+    ldlCholesterol: string;
+    hdlCholesterol: string;
+    triglycerides: string;
+    creatinine: string;
     medicalHistory: string;
-    selectConditions: string;
-    symptoms: string;
-    selectSymptoms: string;
-    analyze: string;
+    existingConditions: string;
+    familyHistory: string;
+    currentSymptoms: string;
+    conditionsSelected: string;
+    symptomsSelected: string;
+    analyzeRisk: string;
     analyzing: string;
+    conditionsList: {
+      diabetes: string;
+      hypertension: string;
+      heartDisease: string;
+      coronaryArtery: string;
+      arrhythmia: string;
+      heartFailure: string;
+      strokeHistory: string;
+      kidneyDisease: string;
+      obesity: string;
+      sleepApnea: string;
+      thyroid: string;
+      asthma: string;
+    };
+    symptomsList: {
+      chestPain: string;
+      shortnessBreath: string;
+      palpitations: string;
+      fatigue: string;
+      dizziness: string;
+      swellingLegs: string;
+      irregularHeartbeat: string;
+      coldSweats: string;
+      nausea: string;
+      frequentUrination: string;
+      excessiveThirst: string;
+      blurredVision: string;
+    };
+    familyHistoryList: {
+      heartDisease: string;
+      diabetes: string;
+      hypertension: string;
+      stroke: string;
+      cancer: string;
+      suddenDeath: string;
+    };
   };
   // File upload
   upload: {
@@ -118,40 +191,13 @@ export interface Translations {
     send: string;
     error: string;
   };
-  // Conditions (diseases)
-  conditions: {
-    diabetes: string;
-    hypertension: string;
-    obesity: string;
-    smoking: string;
-    highCholesterol: string;
-    familyHistory: string;
-    sedentaryLifestyle: string;
-    stress: string;
-    // Cardiovascular specific
-    coronaryArteryDisease: string;
-    arrhythmia: string;
-    atrialFibrillation: string;
-    heartFailure: string;
-    peripheralArteryDisease: string;
-    aorticAneurysm: string;
-    valvularHeartDisease: string;
-    cardiomyopathy: string;
-    angina: string;
-    myocardialInfarction: string;
-  };
-  // Symptoms
-  symptoms: {
-    chestPain: string;
-    shortBreath: string;
-    fatigue: string;
-    palpitations: string;
-    dizziness: string;
-    swelling: string;
-    irregularHeartbeat: string;
-    coldSweats: string;
-    nausea: string;
-    lightHeadedness: string;
+  // Dashboard
+  dashboard: {
+    title: string;
+    subtitle: string;
+    graphTitle: string;
+    signInPrompt: string;
+    signIn: string;
   };
   // Auth
   auth: {
@@ -180,12 +226,12 @@ export interface Translations {
     back: string;
     next: string;
     previous: string;
-    signInPrompt: string;
   };
   // Footer
   footer: {
     rights: string;
     disclaimer: string;
+    poweredBy: string;
   };
 }
 
@@ -220,31 +266,104 @@ export const translations: Record<Language, Translations> = {
         },
       },
     },
-    patient: {
-      title: 'Patient Information',
+    form: {
       personalInfo: 'Personal Information',
-      name: 'Full Name',
-      namePlaceholder: 'Enter patient name',
+      fullName: 'Full Name',
+      enterName: 'Enter patient name',
       age: 'Age',
-      agePlaceholder: 'Years',
-      gender: 'Gender',
+      years: 'Years',
+      sex: 'Sex',
       male: 'Male',
       female: 'Female',
+      pregnant: 'Pregnant',
+      menopause: 'Menopause',
+      lifestyle: 'Lifestyle Factors',
+      smokingStatus: 'Smoking Status',
+      never: 'Never',
+      former: 'Former',
+      current: 'Current',
+      cigarettesPerDay: 'Cigarettes per day',
+      alcoholConsumption: 'Alcohol Consumption',
+      none: 'None',
+      occasional: 'Occasional',
+      moderate: 'Moderate',
+      heavy: 'Heavy',
+      physicalActivity: 'Physical Activity',
+      sedentary: 'Sedentary',
+      light: 'Light',
+      moderateActivity: 'Moderate',
+      active: 'Active',
       vitalSigns: 'Vital Signs',
       bloodPressure: 'Blood Pressure',
       systolic: 'Systolic',
       diastolic: 'Diastolic',
       heartRate: 'Heart Rate',
       bpm: 'bpm',
-      cholesterol: 'Total Cholesterol',
-      bloodSugar: 'Blood Sugar',
-      mgdl: 'mg/dL',
+      physicalMeasurements: 'Physical Measurements',
+      weight: 'Weight',
+      height: 'Height',
+      bmi: 'BMI',
+      waistCircumference: 'Waist Circumference',
+      bmiCategories: {
+        underweight: 'Underweight',
+        normal: 'Normal',
+        overweight: 'Overweight',
+        obese: 'Obese',
+      },
+      labValues: 'Laboratory Values',
+      glucoseMetabolism: 'Glucose Metabolism',
+      fastingBloodSugar: 'Fasting Blood Sugar',
+      hba1c: 'HbA1c',
+      lipidProfile: 'Lipid Profile',
+      totalCholesterol: 'Total Cholesterol',
+      ldlCholesterol: 'LDL Cholesterol',
+      hdlCholesterol: 'HDL Cholesterol',
+      triglycerides: 'Triglycerides',
+      creatinine: 'Creatinine',
       medicalHistory: 'Medical History',
-      selectConditions: 'Select existing conditions',
-      symptoms: 'Current Symptoms',
-      selectSymptoms: 'Select current symptoms',
-      analyze: 'Analyze Risk',
+      existingConditions: 'Existing Conditions',
+      familyHistory: 'Family History',
+      currentSymptoms: 'Current Symptoms',
+      conditionsSelected: 'conditions selected',
+      symptomsSelected: 'symptoms selected',
+      analyzeRisk: 'Analyze Risk Profile',
       analyzing: 'Analyzing...',
+      conditionsList: {
+        diabetes: 'Diabetes',
+        hypertension: 'Hypertension',
+        heartDisease: 'Heart Disease',
+        coronaryArtery: 'Coronary Artery Disease',
+        arrhythmia: 'Arrhythmia',
+        heartFailure: 'Heart Failure',
+        strokeHistory: 'Stroke (History)',
+        kidneyDisease: 'Kidney Disease',
+        obesity: 'Obesity',
+        sleepApnea: 'Sleep Apnea',
+        thyroid: 'Thyroid Disorder',
+        asthma: 'Asthma/COPD',
+      },
+      symptomsList: {
+        chestPain: 'Chest Pain',
+        shortnessBreath: 'Shortness of Breath',
+        palpitations: 'Palpitations',
+        fatigue: 'Fatigue',
+        dizziness: 'Dizziness',
+        swellingLegs: 'Swelling in Legs',
+        irregularHeartbeat: 'Irregular Heartbeat',
+        coldSweats: 'Cold Sweats',
+        nausea: 'Nausea',
+        frequentUrination: 'Frequent Urination',
+        excessiveThirst: 'Excessive Thirst',
+        blurredVision: 'Blurred Vision',
+      },
+      familyHistoryList: {
+        heartDisease: 'Heart Disease',
+        diabetes: 'Diabetes',
+        hypertension: 'Hypertension',
+        stroke: 'Stroke',
+        cancer: 'Cancer',
+        suddenDeath: 'Sudden Cardiac Death',
+      },
     },
     upload: {
       title: 'Medical Files',
@@ -302,44 +421,19 @@ export const translations: Record<Language, Translations> = {
       },
     },
     chat: {
-      title: 'Medical Assistant',
+      title: 'Medical AI Assistant',
       placeholder: 'Ask about your results...',
-      welcome: 'Hello! I\'m your medical assistant. Ask me about disease predictions, risk factors, or recommended preventive measures.',
+      welcome: "Hello! I'm your medical AI assistant. I can help you understand the disease predictions, explain relationships in the medical graph, and provide context for the recommendations. How can I help you today?",
       typing: 'Thinking...',
       send: 'Send',
       error: 'An error occurred. Please try again.',
     },
-    conditions: {
-      diabetes: 'Diabetes',
-      hypertension: 'Hypertension',
-      obesity: 'Obesity',
-      smoking: 'Smoking',
-      highCholesterol: 'High Cholesterol',
-      familyHistory: 'Family History of Heart Disease',
-      sedentaryLifestyle: 'Sedentary Lifestyle',
-      stress: 'Chronic Stress',
-      coronaryArteryDisease: 'Coronary Artery Disease',
-      arrhythmia: 'Arrhythmia',
-      atrialFibrillation: 'Atrial Fibrillation',
-      heartFailure: 'Heart Failure',
-      peripheralArteryDisease: 'Peripheral Artery Disease',
-      aorticAneurysm: 'Aortic Aneurysm',
-      valvularHeartDisease: 'Valvular Heart Disease',
-      cardiomyopathy: 'Cardiomyopathy',
-      angina: 'Angina',
-      myocardialInfarction: 'Myocardial Infarction',
-    },
-    symptoms: {
-      chestPain: 'Chest Pain',
-      shortBreath: 'Shortness of Breath',
-      fatigue: 'Fatigue',
-      palpitations: 'Palpitations',
-      dizziness: 'Dizziness',
-      swelling: 'Leg Swelling',
-      irregularHeartbeat: 'Irregular Heartbeat',
-      coldSweats: 'Cold Sweats',
-      nausea: 'Nausea',
-      lightHeadedness: 'Light-headedness',
+    dashboard: {
+      title: 'Disease Risk',
+      subtitle: 'Analysis Dashboard',
+      graphTitle: 'Medical Knowledge Graph',
+      signInPrompt: 'Sign in to save your predictions and track your health over time.',
+      signIn: 'Sign in',
     },
     auth: {
       signIn: 'Sign In',
@@ -366,11 +460,11 @@ export const translations: Record<Language, Translations> = {
       back: 'Back',
       next: 'Next',
       previous: 'Previous',
-      signInPrompt: 'Sign in to save your predictions',
     },
     footer: {
       rights: 'All rights reserved',
       disclaimer: 'This is a decision-support tool. Always consult healthcare professionals.',
+      poweredBy: 'Powered by Graph Neural Networks',
     },
   },
   fr: {
@@ -403,31 +497,104 @@ export const translations: Record<Language, Translations> = {
         },
       },
     },
-    patient: {
-      title: 'Informations Patient',
+    form: {
       personalInfo: 'Informations Personnelles',
-      name: 'Nom Complet',
-      namePlaceholder: 'Entrez le nom du patient',
+      fullName: 'Nom Complet',
+      enterName: 'Entrez le nom du patient',
       age: 'Âge',
-      agePlaceholder: 'Années',
-      gender: 'Sexe',
+      years: 'Années',
+      sex: 'Sexe',
       male: 'Homme',
       female: 'Femme',
+      pregnant: 'Enceinte',
+      menopause: 'Ménopause',
+      lifestyle: 'Mode de Vie',
+      smokingStatus: 'Statut Tabagique',
+      never: 'Jamais',
+      former: 'Ancien',
+      current: 'Actuel',
+      cigarettesPerDay: 'Cigarettes par jour',
+      alcoholConsumption: 'Consommation d\'Alcool',
+      none: 'Aucune',
+      occasional: 'Occasionnelle',
+      moderate: 'Modérée',
+      heavy: 'Importante',
+      physicalActivity: 'Activité Physique',
+      sedentary: 'Sédentaire',
+      light: 'Légère',
+      moderateActivity: 'Modérée',
+      active: 'Active',
       vitalSigns: 'Signes Vitaux',
       bloodPressure: 'Pression Artérielle',
       systolic: 'Systolique',
       diastolic: 'Diastolique',
       heartRate: 'Fréquence Cardiaque',
       bpm: 'bpm',
-      cholesterol: 'Cholestérol Total',
-      bloodSugar: 'Glycémie',
-      mgdl: 'mg/dL',
+      physicalMeasurements: 'Mesures Physiques',
+      weight: 'Poids',
+      height: 'Taille',
+      bmi: 'IMC',
+      waistCircumference: 'Tour de Taille',
+      bmiCategories: {
+        underweight: 'Insuffisant',
+        normal: 'Normal',
+        overweight: 'Surpoids',
+        obese: 'Obésité',
+      },
+      labValues: 'Valeurs de Laboratoire',
+      glucoseMetabolism: 'Métabolisme du Glucose',
+      fastingBloodSugar: 'Glycémie à Jeun',
+      hba1c: 'HbA1c',
+      lipidProfile: 'Bilan Lipidique',
+      totalCholesterol: 'Cholestérol Total',
+      ldlCholesterol: 'Cholestérol LDL',
+      hdlCholesterol: 'Cholestérol HDL',
+      triglycerides: 'Triglycérides',
+      creatinine: 'Créatinine',
       medicalHistory: 'Antécédents Médicaux',
-      selectConditions: 'Sélectionnez les conditions existantes',
-      symptoms: 'Symptômes Actuels',
-      selectSymptoms: 'Sélectionnez les symptômes actuels',
-      analyze: 'Analyser le Risque',
+      existingConditions: 'Conditions Existantes',
+      familyHistory: 'Antécédents Familiaux',
+      currentSymptoms: 'Symptômes Actuels',
+      conditionsSelected: 'conditions sélectionnées',
+      symptomsSelected: 'symptômes sélectionnés',
+      analyzeRisk: 'Analyser le Profil de Risque',
       analyzing: 'Analyse en cours...',
+      conditionsList: {
+        diabetes: 'Diabète',
+        hypertension: 'Hypertension',
+        heartDisease: 'Maladie Cardiaque',
+        coronaryArtery: 'Maladie Coronarienne',
+        arrhythmia: 'Arythmie',
+        heartFailure: 'Insuffisance Cardiaque',
+        strokeHistory: 'AVC (Antécédent)',
+        kidneyDisease: 'Maladie Rénale',
+        obesity: 'Obésité',
+        sleepApnea: 'Apnée du Sommeil',
+        thyroid: 'Trouble Thyroïdien',
+        asthma: 'Asthme/BPCO',
+      },
+      symptomsList: {
+        chestPain: 'Douleur Thoracique',
+        shortnessBreath: 'Essoufflement',
+        palpitations: 'Palpitations',
+        fatigue: 'Fatigue',
+        dizziness: 'Vertiges',
+        swellingLegs: 'Gonflement des Jambes',
+        irregularHeartbeat: 'Battements Irréguliers',
+        coldSweats: 'Sueurs Froides',
+        nausea: 'Nausées',
+        frequentUrination: 'Mictions Fréquentes',
+        excessiveThirst: 'Soif Excessive',
+        blurredVision: 'Vision Floue',
+      },
+      familyHistoryList: {
+        heartDisease: 'Maladie Cardiaque',
+        diabetes: 'Diabète',
+        hypertension: 'Hypertension',
+        stroke: 'AVC',
+        cancer: 'Cancer',
+        suddenDeath: 'Mort Subite Cardiaque',
+      },
     },
     upload: {
       title: 'Fichiers Médicaux',
@@ -485,44 +652,19 @@ export const translations: Record<Language, Translations> = {
       },
     },
     chat: {
-      title: 'Assistant Médical',
+      title: 'Assistant IA Médical',
       placeholder: 'Posez une question sur vos résultats...',
-      welcome: "Bonjour ! Je suis votre assistant médical. Posez-moi des questions sur les prédictions de maladies, les facteurs de risque ou les mesures préventives recommandées.",
+      welcome: "Bonjour ! Je suis votre assistant médical IA. Je peux vous aider à comprendre les prédictions de maladies, expliquer les relations dans le graphe médical et fournir le contexte des recommandations. Comment puis-je vous aider ?",
       typing: 'Réflexion...',
       send: 'Envoyer',
       error: "Une erreur s'est produite. Veuillez réessayer.",
     },
-    conditions: {
-      diabetes: 'Diabète',
-      hypertension: 'Hypertension',
-      obesity: 'Obésité',
-      smoking: 'Tabagisme',
-      highCholesterol: 'Cholestérol Élevé',
-      familyHistory: 'Antécédents Familiaux de Maladie Cardiaque',
-      sedentaryLifestyle: 'Mode de Vie Sédentaire',
-      stress: 'Stress Chronique',
-      coronaryArteryDisease: 'Maladie Coronarienne',
-      arrhythmia: 'Arythmie',
-      atrialFibrillation: 'Fibrillation Auriculaire',
-      heartFailure: 'Insuffisance Cardiaque',
-      peripheralArteryDisease: 'Artériopathie Périphérique',
-      aorticAneurysm: 'Anévrisme Aortique',
-      valvularHeartDisease: 'Valvulopathie',
-      cardiomyopathy: 'Cardiomyopathie',
-      angina: 'Angine de Poitrine',
-      myocardialInfarction: 'Infarctus du Myocarde',
-    },
-    symptoms: {
-      chestPain: 'Douleur Thoracique',
-      shortBreath: 'Essoufflement',
-      fatigue: 'Fatigue',
-      palpitations: 'Palpitations',
-      dizziness: 'Vertiges',
-      swelling: 'Œdème des Jambes',
-      irregularHeartbeat: 'Battement Cardiaque Irrégulier',
-      coldSweats: 'Sueurs Froides',
-      nausea: 'Nausée',
-      lightHeadedness: 'Étourdissement',
+    dashboard: {
+      title: 'Risque de Maladie',
+      subtitle: 'Tableau de Bord d\'Analyse',
+      graphTitle: 'Graphe de Connaissances Médicales',
+      signInPrompt: 'Connectez-vous pour sauvegarder vos prédictions et suivre votre santé.',
+      signIn: 'Se connecter',
     },
     auth: {
       signIn: 'Connexion',
@@ -530,7 +672,7 @@ export const translations: Record<Language, Translations> = {
       email: 'Email',
       password: 'Mot de passe',
       confirmPassword: 'Confirmer le mot de passe',
-      noAccount: "Pas de compte ?",
+      noAccount: "Pas encore de compte ?",
       hasAccount: 'Déjà un compte ?',
       createAccount: 'Créer un compte',
       loginAccount: 'Se connecter',
@@ -549,11 +691,11 @@ export const translations: Record<Language, Translations> = {
       back: 'Retour',
       next: 'Suivant',
       previous: 'Précédent',
-      signInPrompt: 'Connectez-vous pour sauvegarder vos prédictions',
     },
     footer: {
       rights: 'Tous droits réservés',
       disclaimer: "Ceci est un outil d'aide à la décision. Consultez toujours des professionnels de santé.",
+      poweredBy: 'Propulsé par Réseaux Neuronaux de Graphes',
     },
   },
   ar: {
@@ -567,14 +709,14 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       badge: 'مدعوم بشبكات الرسم البياني العصبية',
-      title1: 'التنبؤ الذكي',
-      title2: 'بالأمراض',
-      subtitle: 'منصة دعم القرار الطبي المتخصصة في أمراض القلب والأوعية الدموية، تستخدم الرسوم البيانية المرجحة للأمراض ونماذج الذكاء الاصطناعي للتنبؤ بالمخاطر الصحية وتقديم توصيات وقائية مخصصة.',
+      title1: 'التنبؤ',
+      title2: 'الذكي بالأمراض',
+      subtitle: 'منصة دعم القرار الطبي المتخصصة في أمراض القلب والأوعية الدموية، تستخدم رسومات بيانية موزونة للأمراض ونماذج الذكاء الاصطناعي للتنبؤ بالمخاطر الصحية وتقديم توصيات وقائية مخصصة.',
       cta: 'بدء التحليل',
       features: {
         graph: {
-          title: 'رسم القلب البياني',
-          description: 'رسم بياني موجه ومرجح يمثل علاقات أمراض القلب والأوعية الدموية ومسارات التطور',
+          title: 'الرسم البياني القلبي',
+          description: 'رسم بياني موجه وموزون يصور العلاقات بين أمراض القلب ومسارات التطور',
         },
         gnn: {
           title: 'تنبؤ الذكاء الاصطناعي',
@@ -586,39 +728,112 @@ export const translations: Record<Language, Translations> = {
         },
       },
     },
-    patient: {
-      title: 'معلومات المريض',
+    form: {
       personalInfo: 'المعلومات الشخصية',
-      name: 'الاسم الكامل',
-      namePlaceholder: 'أدخل اسم المريض',
+      fullName: 'الاسم الكامل',
+      enterName: 'أدخل اسم المريض',
       age: 'العمر',
-      agePlaceholder: 'السنوات',
-      gender: 'الجنس',
+      years: 'سنوات',
+      sex: 'الجنس',
       male: 'ذكر',
       female: 'أنثى',
+      pregnant: 'حامل',
+      menopause: 'سن اليأس',
+      lifestyle: 'نمط الحياة',
+      smokingStatus: 'حالة التدخين',
+      never: 'أبداً',
+      former: 'سابق',
+      current: 'حالي',
+      cigarettesPerDay: 'السجائر يومياً',
+      alcoholConsumption: 'استهلاك الكحول',
+      none: 'لا شيء',
+      occasional: 'أحياناً',
+      moderate: 'معتدل',
+      heavy: 'كثير',
+      physicalActivity: 'النشاط البدني',
+      sedentary: 'خامل',
+      light: 'خفيف',
+      moderateActivity: 'معتدل',
+      active: 'نشط',
       vitalSigns: 'العلامات الحيوية',
       bloodPressure: 'ضغط الدم',
       systolic: 'الانقباضي',
       diastolic: 'الانبساطي',
       heartRate: 'معدل ضربات القلب',
       bpm: 'نبضة/دقيقة',
-      cholesterol: 'الكوليسترول الكلي',
-      bloodSugar: 'سكر الدم',
-      mgdl: 'ملغ/ديسيلتر',
+      physicalMeasurements: 'القياسات الجسدية',
+      weight: 'الوزن',
+      height: 'الطول',
+      bmi: 'مؤشر كتلة الجسم',
+      waistCircumference: 'محيط الخصر',
+      bmiCategories: {
+        underweight: 'نقص الوزن',
+        normal: 'طبيعي',
+        overweight: 'زيادة الوزن',
+        obese: 'سمنة',
+      },
+      labValues: 'القيم المخبرية',
+      glucoseMetabolism: 'استقلاب الجلوكوز',
+      fastingBloodSugar: 'سكر الدم الصائم',
+      hba1c: 'الهيموغلوبين السكري',
+      lipidProfile: 'تحليل الدهون',
+      totalCholesterol: 'الكوليسترول الكلي',
+      ldlCholesterol: 'الكوليسترول الضار',
+      hdlCholesterol: 'الكوليسترول الجيد',
+      triglycerides: 'الدهون الثلاثية',
+      creatinine: 'الكرياتينين',
       medicalHistory: 'التاريخ الطبي',
-      selectConditions: 'اختر الحالات الموجودة',
-      symptoms: 'الأعراض الحالية',
-      selectSymptoms: 'اختر الأعراض الحالية',
-      analyze: 'تحليل المخاطر',
+      existingConditions: 'الحالات الموجودة',
+      familyHistory: 'التاريخ العائلي',
+      currentSymptoms: 'الأعراض الحالية',
+      conditionsSelected: 'حالة مختارة',
+      symptomsSelected: 'عرض مختار',
+      analyzeRisk: 'تحليل ملف المخاطر',
       analyzing: 'جاري التحليل...',
+      conditionsList: {
+        diabetes: 'السكري',
+        hypertension: 'ارتفاع ضغط الدم',
+        heartDisease: 'أمراض القلب',
+        coronaryArtery: 'مرض الشريان التاجي',
+        arrhythmia: 'عدم انتظام ضربات القلب',
+        heartFailure: 'فشل القلب',
+        strokeHistory: 'سكتة دماغية (سابقة)',
+        kidneyDisease: 'أمراض الكلى',
+        obesity: 'السمنة',
+        sleepApnea: 'انقطاع النفس أثناء النوم',
+        thyroid: 'اضطرابات الغدة الدرقية',
+        asthma: 'الربو/مرض الانسداد الرئوي',
+      },
+      symptomsList: {
+        chestPain: 'ألم في الصدر',
+        shortnessBreath: 'ضيق التنفس',
+        palpitations: 'خفقان القلب',
+        fatigue: 'التعب',
+        dizziness: 'الدوخة',
+        swellingLegs: 'تورم الساقين',
+        irregularHeartbeat: 'عدم انتظام ضربات القلب',
+        coldSweats: 'العرق البارد',
+        nausea: 'الغثيان',
+        frequentUrination: 'كثرة التبول',
+        excessiveThirst: 'العطش الشديد',
+        blurredVision: 'عدم وضوح الرؤية',
+      },
+      familyHistoryList: {
+        heartDisease: 'أمراض القلب',
+        diabetes: 'السكري',
+        hypertension: 'ارتفاع ضغط الدم',
+        stroke: 'السكتة الدماغية',
+        cancer: 'السرطان',
+        suddenDeath: 'الموت القلبي المفاجئ',
+      },
     },
     upload: {
       title: 'الملفات الطبية',
-      description: 'ارفع الصور الطبية أو بيانات تخطيط القلب للتحليل بالذكاء الاصطناعي',
-      dropzone: 'اسحب الملفات هنا أو انقر للرفع',
+      description: 'قم بتحميل الصور الطبية أو بيانات تخطيط القلب للتحليل بالذكاء الاصطناعي',
+      dropzone: 'أسقط الملفات هنا أو انقر للتحميل',
       dragActive: 'أسقط الملفات هنا',
       supportedFormats: 'الصيغ المدعومة',
-      images: 'الصور الطبية (أشعة، رنين، مقطعية)',
+      images: 'صور طبية (أشعة، رنين، مقطعية)',
       ecg: 'بيانات تخطيط القلب (PDF، صور)',
       analyzing: 'جاري التحليل...',
       analyzed: 'اكتمل التحليل',
@@ -626,9 +841,9 @@ export const translations: Record<Language, Translations> = {
     },
     graph: {
       title: 'شبكة أمراض القلب والأوعية الدموية',
-      legend: 'مستويات المخاطر',
+      legend: 'مستويات الخطر',
       riskLevels: {
-        high: 'خطر مرتفع',
+        high: 'خطر عالي',
         medium: 'خطر متوسط',
         low: 'خطر منخفض',
         inactive: 'غير نشط',
@@ -641,13 +856,13 @@ export const translations: Record<Language, Translations> = {
       clickToSelect: 'انقر على عقدة لرؤية التفاصيل',
     },
     predictions: {
-      title: 'توقعات المخاطر',
+      title: 'تنبؤات المخاطر',
       analyzing: 'جاري تحليل بيانات المريض...',
-      noPredictions: 'ستظهر التوقعات هنا بعد التحليل',
+      noPredictions: 'ستظهر التنبؤات هنا بعد التحليل',
       probability: 'الاحتمالية',
       pathway: 'مسار التطور',
       riskLevel: 'مستوى الخطر',
-      high: 'مرتفع',
+      high: 'عالي',
       medium: 'متوسط',
       low: 'منخفض',
       reasoning: 'التفسير السريري',
@@ -657,8 +872,8 @@ export const translations: Record<Language, Translations> = {
       noRecommendations: 'ستظهر التوصيات هنا بعد التحليل',
       types: {
         test: 'فحص طبي',
-        lifestyle: 'تغيير نمط الحياة',
-        prevention: 'وقاية',
+        lifestyle: 'نمط الحياة',
+        prevention: 'الوقاية',
         diet: 'نصيحة غذائية',
       },
       priority: {
@@ -668,44 +883,19 @@ export const translations: Record<Language, Translations> = {
       },
     },
     chat: {
-      title: 'المساعد الطبي',
+      title: 'مساعد الذكاء الاصطناعي الطبي',
       placeholder: 'اسأل عن نتائجك...',
-      welcome: 'مرحباً! أنا مساعدك الطبي. اسألني عن توقعات الأمراض أو عوامل الخطر أو الإجراءات الوقائية الموصى بها.',
+      welcome: 'مرحباً! أنا مساعدك الطبي بالذكاء الاصطناعي. يمكنني مساعدتك في فهم تنبؤات الأمراض وشرح العلاقات في الرسم البياني الطبي وتقديم السياق للتوصيات. كيف يمكنني مساعدتك اليوم؟',
       typing: 'جاري التفكير...',
       send: 'إرسال',
       error: 'حدث خطأ. يرجى المحاولة مرة أخرى.',
     },
-    conditions: {
-      diabetes: 'السكري',
-      hypertension: 'ارتفاع ضغط الدم',
-      obesity: 'السمنة',
-      smoking: 'التدخين',
-      highCholesterol: 'ارتفاع الكوليسترول',
-      familyHistory: 'تاريخ عائلي لأمراض القلب',
-      sedentaryLifestyle: 'نمط حياة خامل',
-      stress: 'التوتر المزمن',
-      coronaryArteryDisease: 'مرض الشريان التاجي',
-      arrhythmia: 'اضطراب نظم القلب',
-      atrialFibrillation: 'الرجفان الأذيني',
-      heartFailure: 'فشل القلب',
-      peripheralArteryDisease: 'مرض الشرايين الطرفية',
-      aorticAneurysm: 'تمدد الأوعية الأبهري',
-      valvularHeartDisease: 'مرض صمامات القلب',
-      cardiomyopathy: 'اعتلال عضلة القلب',
-      angina: 'الذبحة الصدرية',
-      myocardialInfarction: 'احتشاء عضلة القلب',
-    },
-    symptoms: {
-      chestPain: 'ألم الصدر',
-      shortBreath: 'ضيق التنفس',
-      fatigue: 'التعب',
-      palpitations: 'خفقان القلب',
-      dizziness: 'الدوخة',
-      swelling: 'تورم الساقين',
-      irregularHeartbeat: 'نبض قلب غير منتظم',
-      coldSweats: 'تعرق بارد',
-      nausea: 'الغثيان',
-      lightHeadedness: 'الدوار الخفيف',
+    dashboard: {
+      title: 'مخاطر الأمراض',
+      subtitle: 'لوحة التحليل',
+      graphTitle: 'رسم المعرفة الطبية',
+      signInPrompt: 'سجل الدخول لحفظ تنبؤاتك وتتبع صحتك.',
+      signIn: 'تسجيل الدخول',
     },
     auth: {
       signIn: 'تسجيل الدخول',
@@ -716,7 +906,7 @@ export const translations: Record<Language, Translations> = {
       noAccount: 'ليس لديك حساب؟',
       hasAccount: 'لديك حساب بالفعل؟',
       createAccount: 'إنشاء حساب',
-      loginAccount: 'دخول',
+      loginAccount: 'تسجيل الدخول',
       error: 'فشل التحقق. يرجى المحاولة مرة أخرى.',
     },
     common: {
@@ -732,11 +922,11 @@ export const translations: Record<Language, Translations> = {
       back: 'رجوع',
       next: 'التالي',
       previous: 'السابق',
-      signInPrompt: 'سجل الدخول لحفظ توقعاتك',
     },
     footer: {
       rights: 'جميع الحقوق محفوظة',
-      disclaimer: 'هذه أداة لدعم القرار. استشر دائماً المختصين في الرعاية الصحية.',
+      disclaimer: 'هذه أداة دعم القرار. استشر دائماً المتخصصين في الرعاية الصحية.',
+      poweredBy: 'مدعوم بشبكات الرسم البياني العصبية',
     },
   },
 };
