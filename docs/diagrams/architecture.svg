@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" role="img" aria-labelledby="archTitle">
+  <title id="archTitle">Health Graph AI architecture diagram</title>
+  <style>
+    :root{ --bg:#ffffff; --card:#f1f5f9; --accent:#0ea5a4; --muted:#475569; --accent-2:#7c3aed }
+    .card { fill:var(--card); stroke:#e2e8f0; stroke-width:1; rx:12 }
+    .title{ font: 700 14px/1.2 'Inter', Arial; fill:var(--muted) }
+    .caption{ font: 400 12px/1.2 'Inter', Arial; fill:var(--muted) }
+    .arrow{ stroke:rgba(2,6,23,0.7); stroke-width:2; fill:none; marker-end:url(#arrow) }
+    .group:hover rect { transform: translateY(-4px); }
+    .clickable { cursor:pointer; }
+    .legend { font: 400 12px 'Inter', Arial; fill:var(--muted) }
+  </style>
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0%" stop-color="#ecfeff" />
+      <stop offset="100%" stop-color="#f0f9ff" />
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a" />
+    </marker>
+  </defs>
+
+  <!-- Browser (clickable) -->
+  <a xlink:href="#frontend" class="clickable" aria-label="Browser (opens frontend section)">
+    <g class="group">
+      <rect x="36" y="44" width="220" height="86" class="card" rx="12" fill="url(#g1)" />
+      <title>Browser — React + Vite</title>
+      <text x="56" y="74" class="title">Browser</text>
+      <text x="56" y="96" class="caption">React + Vite — Frontend UI</text>
+    </g>
+  </a>
+
+  <!-- Frontend App (clickable) -->
+  <a xlink:href="#frontend" class="clickable">
+    <g class="group">
+      <rect x="300" y="38" width="260" height="86" class="card" rx="14" />
+      <title>Frontend App — TypeScript, Tailwind, shadcn-ui</title>
+      <text x="318" y="68" class="title">Frontend App</text>
+      <text x="318" y="90" class="caption">TypeScript • Tailwind • shadcn-ui</text>
+    </g>
+  </a>
+
+  <!-- Auth (clickable) -->
+  <a xlink:href="#auth" class="clickable">
+    <g class="group">
+      <rect x="300" y="150" width="220" height="72" class="card" rx="12" />
+      <title>Supabase Auth — sessions and JWTs</title>
+      <text x="318" y="176" class="title">Supabase Auth</text>
+      <text x="318" y="196" class="caption">Sessions & JWTs</text>
+    </g>
+  </a>
+
+  <!-- Functions (clickable) -->
+  <a xlink:href="#functions" class="clickable">
+    <g class="group">
+      <rect x="640" y="24" width="300" height="130" class="card" rx="12" />
+      <title>Supabase Edge Functions — predict-diseases, analyze-medical-file</title>
+      <text x="660" y="54" class="title">Supabase Edge Functions</text>
+      <text x="660" y="76" class="caption">predict-diseases • analyze-medical-file</text>
+      <text x="660" y="96" class="caption">Deno-based • Prompt orchestration</text>
+    </g>
+  </a>
+
+  <!-- AI Gateway -->
+  <a xlink:href="#ai-gateway" class="clickable">
+    <g class="group">
+      <rect x="640" y="180" width="220" height="76" class="card" rx="12" />
+      <title>AI Gateway — LLM & Vision</title>
+      <text x="660" y="206" class="title">AI Gateway</text>
+      <text x="660" y="226" class="caption">LLM + Vision (Lovable)</text>
+    </g>
+  </a>
+
+  <!-- DB -->
+  <a xlink:href="#database" class="clickable">
+    <g class="group">
+      <rect x="880" y="180" width="96" height="76" class="card" rx="12" />
+      <title>Supabase Postgres — prediction_history (RLS)</title>
+      <text x="894" y="206" class="title">Supabase</text>
+      <text x="894" y="226" class="caption">Postgres • prediction_history</text>
+    </g>
+  </a>
+
+  <!-- Arrows -->
+  <path class="arrow" d="M 256 86 L 300 86" />
+  <path class="arrow" d="M 560 86 L 640 86" />
+  <path class="arrow" d="M 800 154 L 800 180" />
+  <path class="arrow" d="M 820 238 L 880 238" />
+  <path class="arrow" d="M 430 122 L 430 150" />
+
+  <!-- Annotations / legend -->
+  <rect x="36" y="324" width="392" height="64" fill="#0f172a" rx="8" opacity="0.04" />
+  <text x="56" y="346" class="legend">Interactive: hover to highlight, click boxes to jump to documentation sections.</text>
+  <text x="56" y="366" class="legend">Notes: Functions validate authenticated requests; frontend invokes functions with user session tokens.</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="340" viewBox="0 0 800 340" role="img" aria-labelledby="diseaseTitle">
+  <title id="diseaseTitle">Sample disease–symptom knowledge graph</title>
+  <style>
+    :root{ --card:#fff; --edge:#334155; --cardStroke:#e6eef2; --cardBg:#f8fafc }
+    .edge{ stroke:var(--edge); stroke-width:2; fill:none; marker-end:url(#arrow) }
+    .node { cursor:pointer; transition: transform 0.12s ease; }
+    .node circle { fill:#fff; stroke:#0f172a; stroke-width:1; }
+    .node text { font: 600 12px/1.1 'Inter', Arial; fill:#0f172a }
+    .node:hover { transform: translateY(-4px) scale(1.02); }
+    .card { fill:#f8fafc; stroke:#e2e8f0; stroke-width:1; rx:8 }
+    .legend { font: 400 12px 'Inter', Arial; fill:#475569 }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a" />
+    </marker>
+  </defs>
+
+  <!-- Nodes (grouped with tooltips and links) -->
+  <g class="node" transform="translate(80,120)">
+    <a xlink:href="#obesity"><title>Obesity — risk factor</title>
+      <rect x="-60" y="-22" width="120" height="44" class="card" rx="8" />
+      <text x="0" y="6" text-anchor="middle">Obesity</text>
+    </a>
+  </g>
+
+  <g class="node" transform="translate(280,40)">
+    <a xlink:href="#diabetes"><title>Type 2 Diabetes</title>
+      <rect x="-70" y="-22" width="140" height="44" class="card" rx="8" />
+      <text x="0" y="6" text-anchor="middle">Diabetes</text>
+    </a>
+  </g>
+
+  <g class="node" transform="translate(280,200)">
+    <a xlink:href="#hypertension"><title>Hypertension</title>
+      <rect x="-70" y="-22" width="140" height="44" class="card" rx="8" />
+      <text x="0" y="6" text-anchor="middle">Hypertension</text>
+    </a>
+  </g>
+
+  <g class="node" transform="translate(520,40)">
+    <a xlink:href="#heart_disease"><title>Heart Disease</title>
+      <rect x="-70" y="-22" width="140" height="44" class="card" rx="8" />
+      <text x="0" y="6" text-anchor="middle">Heart Disease</text>
+    </a>
+  </g>
+
+  <g class="node" transform="translate(520,200)">
+    <a xlink:href="#stroke"><title>Stroke</title>
+      <rect x="-70" y="-22" width="140" height="44" class="card" rx="8" />
+      <text x="0" y="6" text-anchor="middle">Stroke</text>
+    </a>
+  </g>
+
+  <!-- Edges with arrow markers -->
+  <path class="edge" d="M 140 120 L 210 50" />
+  <path class="edge" d="M 140 120 L 210 210" />
+  <path class="edge" d="M 360 50 L 430 50" />
+  <path class="edge" d="M 360 210 L 430 210" />
+
+  <!-- Legend -->
+  <rect x="24" y="260" width="372" height="64" fill="#0f172a" opacity="0.03" rx="8" />
+  <text x="40" y="284" class="legend">Interactive nodes: hover to highlight; click for more context in the README.</text>
+</svg>
