@@ -35,11 +35,22 @@ const Index = () => {
   const [fileAnalysis, setFileAnalysis] = useState<any>(null);
   const dashboardRef = useRef<HTMLDivElement>(null);
   const { user } = useAuth();
-  const { t, isRTL } = useLanguage();
+  const { t, isRTL, language } = useLanguage();
   const { toast } = useToast();
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
+    // Require authentication to access the dashboard
+    if (!user) {
+      toast({
+        title: t.common.error,
+        description: t.dashboard.signInPrompt,
+        variant: 'destructive',
+      });
+      navigate('/auth');
+      return;
+    }
+
     setShowDashboard(true);
     setTimeout(() => {
       dashboardRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -50,9 +61,20 @@ const Index = () => {
     if (!patientData || (patientData.conditions.length === 0 && patientData.symptoms.length === 0)) {
       toast({
         title: t.common.error,
-        description: 'Please select at least one condition or symptom.',
+        description: t.form.selectAtLeastOne,
         variant: 'destructive',
       });
+      return;
+    }
+
+    // Require authenticated user
+    if (!user) {
+      toast({
+        title: t.common.error,
+        description: t.dashboard.signInPrompt,
+        variant: 'destructive',
+      });
+      navigate('/auth');
       return;
     }
 
@@ -61,24 +83,18 @@ const Index = () => {
     setRecommendations([]);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/predict-diseases`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-        },
-        body: JSON.stringify({
+      // Use Supabase Functions client so the user's session token is sent with the request
+      const { data, error } = await supabase.functions.invoke('predict-diseases', {
+        body: {
           ...patientData,
           fileAnalysis,
-        }),
+          language,
+        },
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to analyze');
+      if (error) {
+        throw error;
       }
-
-      const data = await response.json();
 
       const mappedPredictions: Prediction[] = (data.predictions || []).map((p: any) => ({
         disease: p.disease,
@@ -103,12 +119,13 @@ const Index = () => {
           conditions: patientData.conditions,
           predictions: data.predictions || [],
           recommendations: data.recommendations || [],
+          language,
         });
       }
 
       toast({
         title: t.common.success,
-        description: `Found ${mappedPredictions.length} potential risk factors.`,
+        description: t.predictions.foundRiskFactors.replace('{count}', String(mappedPredictions.length)),
       });
     } catch (error: any) {
       console.error('Analysis error:', error);

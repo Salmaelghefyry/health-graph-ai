@@ -1,4 +1,5 @@
 import { TestTube, Heart, Pill, Utensils, Activity } from 'lucide-react';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface Recommendation {
   type: 'test' | 'lifestyle' | 'prevention' | 'diet';
@@ -18,21 +19,29 @@ const iconMap = {
   diet: Utensils,
 };
 
-const typeLabels = {
-  test: 'Medical Test',
-  lifestyle: 'Lifestyle Change',
-  prevention: 'Prevention',
-  diet: 'Dietary Advice',
-};
-
 export const Recommendations = ({ recommendations }: RecommendationsProps) => {
+  const { t } = useLanguage();
+
+  const typeLabels = {
+    test: t.recommendations.types.test,
+    lifestyle: t.recommendations.types.lifestyle,
+    prevention: t.recommendations.types.prevention,
+    diet: t.recommendations.types.diet,
+  };
+
+  const priorityLabels = {
+    high: t.recommendations.priority.high,
+    medium: t.recommendations.priority.medium,
+    low: t.recommendations.priority.low,
+  } as const;
+
   if (recommendations.length === 0) {
     return (
       <div className="glass-effect rounded-xl p-8 flex flex-col items-center justify-center min-h-[200px] text-center">
         <Heart className="w-12 h-12 text-primary/50 mb-4" />
-        <h3 className="font-display text-lg font-semibold mb-2">Recommendations</h3>
+        <h3 className="font-display text-lg font-semibold mb-2">{t.recommendations.title}</h3>
         <p className="text-muted-foreground text-sm max-w-sm">
-          Personalized recommendations will appear here after analysis.
+          {t.recommendations.noRecommendations}
         </p>
       </div>
     );
@@ -42,7 +51,7 @@ export const Recommendations = ({ recommendations }: RecommendationsProps) => {
     <div className="space-y-4">
       <div className="flex items-center gap-2 mb-4">
         <Heart className="w-5 h-5 text-primary" />
-        <h3 className="font-display font-semibold text-lg">Personalized Recommendations</h3>
+        <h3 className="font-display font-semibold text-lg">{t.recommendations.title}</h3>
       </div>
 
       <div className="grid gap-3">
@@ -83,7 +92,7 @@ export const Recommendations = ({ recommendations }: RecommendationsProps) => {
                   ${rec.priority === 'medium' ? 'bg-warning/20 text-warning' : ''}
                   ${rec.priority === 'low' ? 'bg-success/20 text-success' : ''}
                 `}>
-                  {rec.priority}
+                  {priorityLabels[rec.priority]}
                 </div>
               </div>
             </div>

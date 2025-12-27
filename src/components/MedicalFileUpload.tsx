@@ -1,4 +1,6 @@
 import { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/hooks/useAuth';
 import { Upload, X, FileImage, Activity, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/i18n/LanguageContext';
@@ -34,6 +36,8 @@ interface MedicalFileUploadProps {
 
 export const MedicalFileUpload = ({ onAnalysisComplete }: MedicalFileUploadProps) => {
   const { t, language, isRTL } = useLanguage();
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const [files, setFiles] = useState<UploadedFile[]>([]);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -60,6 +64,14 @@ export const MedicalFileUpload = ({ onAnalysisComplete }: MedicalFileUploadProps
   };
 
   const analyzeFile = async (uploadedFile: UploadedFile) => {
+    // Require authenticated user before analyzing
+    if (!user) {
+      toast.error(t.upload.signInToAnalyze);
+      navigate('/auth');
+      setFiles(prev => prev.map(f => f.id === uploadedFile.id ? { ...f, status: 'pending' } : f));
+      return;
+    }
+
     setFiles(prev => prev.map(f => 
       f.id === uploadedFile.id ? { ...f, status: 'analyzing' as const } : f
     ));
@@ -117,8 +129,13 @@ export const MedicalFileUpload = ({ onAnalysisComplete }: MedicalFileUploadProps
     const processedFiles = await Promise.all(imageFiles.map(processFile));
     setFiles(prev => [...prev, ...processedFiles]);
     
-    // Auto-analyze each file
-    processedFiles.forEach(file => analyzeFile(file));
+    // Auto-analyze each file only when signed in
+    if (user) {
+      processedFiles.forEach(file => analyzeFile(file));
+    } else {
+      toast.error(t.upload.signInToAnalyze);
+      navigate('/auth');
+    }
   }, [language]);
 
   const handleFileInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,8 +143,13 @@ export const MedicalFileUpload = ({ onAnalysisComplete }: MedicalFileUploadProps
     const processedFiles = await Promise.all(selectedFiles.map(processFile));
     setFiles(prev => [...prev, ...processedFiles]);
     
-    // Auto-analyze each file
-    processedFiles.forEach(file => analyzeFile(file));
+    // Auto-analyze each file only when signed in
+    if (user) {
+      processedFiles.forEach(file => analyzeFile(file));
+    } else {
+      toast.error(t.upload.signInToAnalyze);
+      navigate('/auth');
+    }
   };
 
   const removeFile = (id: string) => {
@@ -158,6 +180,13 @@ export const MedicalFileUpload = ({ onAnalysisComplete }: MedicalFileUploadProps
           <p className="text-sm text-muted-foreground">{t.upload.description}</p>
         </div>
       </div>
+
+      {!user && (
+        <div className="p-3 bg-warning/10 rounded-md mb-3 flex items-center justify-between">
+          <p className="text-sm text-warning">{t.upload.signInToAnalyze}</p>
+          <Button size="sm" onClick={() => navigate('/auth')}>{t.dashboard.signIn}</Button>
+        </div>
+      )},
 
       {/* Dropzone */}
       <label

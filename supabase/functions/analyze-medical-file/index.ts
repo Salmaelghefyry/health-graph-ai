@@ -12,6 +12,15 @@ serve(async (req) => {
   }
 
   try {
+    // Enforce authenticated requests: require a Bearer JWT
+    const authHeader = req.headers.get('authorization') || '';
+    if (!authHeader || !authHeader.startsWith('Bearer ') || authHeader.split(' ')[1].split('.').length !== 3) {
+      return new Response(JSON.stringify({ error: 'Authentication required. Please sign in.' }), {
+        status: 401,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     const { imageBase64, fileType, language = 'en' } = await req.json();
     
     console.log('Processing medical file analysis:', { fileType, language });

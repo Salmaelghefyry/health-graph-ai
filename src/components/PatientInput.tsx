@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/i18n/LanguageContext';
 import { Activity, Plus, X, User, Calendar, FileText } from 'lucide-react';
 
 interface PatientInputProps {
@@ -8,20 +9,34 @@ interface PatientInputProps {
   onAgeChange?: (age: number | undefined) => void;
 }
 
-const availableConditions = [
-  { id: 'diabetes', name: 'Diabetes Type 2', category: 'Metabolic' },
-  { id: 'hypertension', name: 'Hypertension', category: 'Cardiovascular' },
-  { id: 'heart_disease', name: 'Heart Disease', category: 'Cardiovascular' },
-  { id: 'obesity', name: 'Obesity', category: 'Metabolic' },
-  { id: 'sleep_apnea', name: 'Sleep Apnea', category: 'Respiratory' },
-  { id: 'kidney_disease', name: 'Kidney Disease', category: 'Renal' },
-  { id: 'stroke', name: 'Stroke (History)', category: 'Neurological' },
-  { id: 'neuropathy', name: 'Neuropathy', category: 'Neurological' },
-  { id: 'retinopathy', name: 'Retinopathy', category: 'Ophthalmological' },
-  { id: 'atherosclerosis', name: 'Atherosclerosis', category: 'Cardiovascular' },
-];
+const [availableConditions, setAvailableConditions] = useState<Array<{id:string,name:string,category:string}>>([]);
+
+// Load diseases from generated data file to keep the UI in sync with the graph
+useEffect(() => {
+  let mounted = true;
+  (async () => {
+    try {
+      const res = await fetch('/data/disease_symptom_graph.json');
+      if (!res.ok) throw new Error('No graph data');
+      const graph = await res.json();
+      const diseaseNodes = graph.nodes.filter((n: any) => n.category === 'disease');
+      if (!mounted) return;
+      setAvailableConditions(diseaseNodes.map((d: any) => ({ id: d.id, name: d.name, category: 'Other' })));
+    } catch (err) {
+      // fallback to a reasonable default
+      setAvailableConditions([
+        { id: 'diabetes', name: 'Diabetes Type 2', category: 'Metabolic' },
+        { id: 'hypertension', name: 'Hypertension', category: 'Cardiovascular' },
+        { id: 'obesity', name: 'Obesity', category: 'Metabolic' },
+      ]);
+    }
+  })();
+  return () => { mounted = false; };
+}, []);
 
 export const PatientInput = ({ onConditionsChange, onAnalyze, onAgeChange }: PatientInputProps) => {
+  const { t } = useLanguage();
+
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const [patientName, setPatientName] = useState('');
   const [patientAge, setPatientAge] = useState('');
@@ -49,22 +64,20 @@ export const PatientInput = ({ onConditionsChange, onAnalyze, onAgeChange }: Pat
       <div className="glass-effect rounded-xl p-6 space-y-4">
         <div className="flex items-center gap-2 mb-4">
           <User className="w-5 h-5 text-primary" />
-          <h3 className="font-display font-semibold text-lg">Patient Information</h3>
-        </div>
-        
+          <h3 className="font-display font-semibold text-lg">{t.form.personalInfo}</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label className="text-sm text-muted-foreground">Patient Name</label>
+            <label className="text-sm text-muted-foreground">{t.form.fullName}</label>
             <input
               type="text"
               value={patientName}
               onChange={(e) => setPatientName(e.target.value)}
-              placeholder="Enter patient name"
+              placeholder={t.form.enterName}
               className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm text-muted-foreground">Age</label>
+            <label className="text-sm text-muted-foreground">{t.form.age}</label>
             <input
               type="number"
               value={patientAge}
@@ -72,7 +85,7 @@ export const PatientInput = ({ onConditionsChange, onAnalyze, onAgeChange }: Pat
                 setPatientAge(e.target.value);
                 onAgeChange?.(e.target.value ? parseInt(e.target.value) : undefined);
               }}
-              placeholder="Enter age"
+              placeholder={t.form.enterAge}
               className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
             />
           </div>
@@ -83,11 +96,11 @@ export const PatientInput = ({ onConditionsChange, onAnalyze, onAgeChange }: Pat
       <div className="glass-effect rounded-xl p-6 space-y-4">
         <div className="flex items-center gap-2 mb-4">
           <FileText className="w-5 h-5 text-primary" />
-          <h3 className="font-display font-semibold text-lg">Medical History</h3>
+          <h3 className="font-display font-semibold text-lg">{t.form.medicalHistory}</h3>
         </div>
         
         <p className="text-sm text-muted-foreground mb-4">
-          Select current or past conditions from the patient's medical record:
+          {t.form.selectConditions}
         </p>
 
         {categories.map(category => (
@@ -131,7 +144,7 @@ export const PatientInput = ({ onConditionsChange, onAnalyze, onAgeChange }: Pat
             <div className="flex items-center gap-2">
               <Activity className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium">
-                {selectedConditions.length} condition{selectedConditions.length > 1 ? 's' : ''} selected
+                {selectedConditions.length} {t.form.conditionsSelected}
               </span>
             </div>
             <Button
@@ -140,7 +153,7 @@ export const PatientInput = ({ onConditionsChange, onAnalyze, onAgeChange }: Pat
               onClick={handleAnalyze}
               className="font-display"
             >
-              Analyze Risk Profile
+              {t.form.analyzeRisk}
             </Button>
           </div>
         </div>

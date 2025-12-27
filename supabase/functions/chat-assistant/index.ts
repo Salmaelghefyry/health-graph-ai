@@ -11,7 +11,9 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, predictions, conditions } = await req.json();
+    const { messages, predictions, conditions, language } = await req.json();
+    const lang = language || 'en';
+    const langNames: Record<string,string> = { en: 'English', fr: 'French', ar: 'Arabic' };
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     
     if (!LOVABLE_API_KEY) {
@@ -20,8 +22,10 @@ serve(async (req) => {
 
     console.log('Chat request received');
 
-    const systemPrompt = `You are a helpful medical AI assistant for a disease prediction platform. Your role is to:
+    const languageInstruction = `\nImportant: Reply to the user in ${langNames[lang] || 'English'} (language code: ${lang}). Use this language for all text in your responses.`;
 
+    const systemPrompt = `You are a helpful medical AI assistant for a disease prediction platform. Your role is to:${languageInstruction}
+`
 1. Explain disease predictions and their reasoning based on medical knowledge graphs
 2. Clarify relationships between diseases (progression, comorbidity, risk factors)
 3. Provide educational information about health conditions

@@ -64,6 +64,26 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 
+---
+
+## Using a public Disease & Symptoms dataset (Kaggle)
+
+This project ships with a small sample disease–symptom graph (`public/data/disease_symptom_graph.json`) used for demo and development. To replace it with the latest Kaggle dataset (`choongqianzheng/disease-and-symptoms-dataset`):
+
+1. Install the Kaggle CLI and authenticate (https://github.com/Kaggle/kaggle-api).
+2. Download the dataset locally:
+
+   kaggle datasets download -d choongqianzheng/disease-and-symptoms-dataset --unzip -p /path/to/download
+
+3. Run the included converter script to transform the CSV into a graph JSON used by the app:
+
+   node scripts/convert-disease-symptom.js --input /path/to/disease_symptom.csv --output public/data/disease_symptom_graph.json
+
+4. Optionally copy the generated JSON into `supabase/functions/predict-diseases/disease_symptom_graph.json` so the server-side predictor uses the same graph.
+
+Notes: the converter is a simple heuristic — review the output JSON for correctness and adjust mapping logic if the dataset format differs.  
+
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!

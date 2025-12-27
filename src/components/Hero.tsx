@@ -1,11 +1,32 @@
 import { Activity, Brain, Network, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface HeroProps {
   onGetStarted: () => void;
 }
 
 export const Hero = ({ onGetStarted }: HeroProps) => {
+  const { t } = useLanguage();
+
+  const features = [
+    {
+      icon: Network,
+      title: t.hero.features.graph.title,
+      description: t.hero.features.graph.description,
+    },
+    {
+      icon: Brain,
+      title: t.hero.features.gnn.title,
+      description: t.hero.features.gnn.description,
+    },
+    {
+      icon: Shield,
+      title: t.hero.features.recommendations.title,
+      description: t.hero.features.recommendations.description,
+    },
+  ];
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background effects */}
@@ -29,48 +50,32 @@ export const Hero = ({ onGetStarted }: HeroProps) => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full glass-effect text-sm animate-fade-in-up">
             <Brain className="w-4 h-4 text-primary" />
-            <span className="text-muted-foreground">Powered by Graph Neural Networks</span>
+            <span className="text-muted-foreground">{t.hero.badge}</span>
           </div>
 
           {/* Title */}
           <h1 className="font-display text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up animation-delay-100">
-            <span className="text-foreground">Intelligent</span>
+            <span className="text-foreground">{t.hero.title1}</span>
             <br />
-            <span className="glow-text">Disease Prediction</span>
+            <span className="glow-text">{t.hero.title2}</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in-up animation-delay-200">
-            A medical decision-support platform using weighted disease graphs and GNN models to predict health risks, progression pathways, and deliver personalized preventive recommendations.
+            {t.hero.subtitle}
           </p>
 
           {/* CTA Button */}
           <div className="animate-fade-in-up animation-delay-300">
             <Button variant="glow" size="xl" onClick={onGetStarted} className="font-display">
-              Start Analysis
+              {t.hero.cta}
               <Activity className="w-5 h-5 ml-2" />
             </Button>
           </div>
 
           {/* Feature cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
-            {[
-              {
-                icon: Network,
-                title: 'Medical Graph',
-                description: 'Weighted directed graph modeling disease relationships and progression pathways',
-              },
-              {
-                icon: Brain,
-                title: 'GNN Prediction',
-                description: 'Graph Neural Network analyzes patient records to predict probable diseases',
-              },
-              {
-                icon: Shield,
-                title: 'Smart Recommendations',
-                description: 'Personalized tests, lifestyle changes, and preventive measures',
-              },
-            ].map((feature, index) => (
+            {features.map((feature, index) => (
               <div
                 key={feature.title}
                 className="glass-effect rounded-2xl p-6 text-left hover:border-primary/30 transition-all duration-300 animate-fade-in-up"

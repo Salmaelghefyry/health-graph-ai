@@ -1,0 +1,3036 @@
+{
+  "nodes": [
+    {
+      "id": "fungal_infection",
+      "name": "Fungal infection",
+      "category": "disease",
+      "precautions": [
+        "bath twice",
+        "use detol or neem in bathing water",
+        "keep infected area dry",
+        "use clean cloths"
+      ]
+    },
+    {
+      "id": "allergy",
+      "name": "Allergy",
+      "category": "disease",
+      "precautions": [
+        "apply calamine",
+        "cover area with bandage",
+        "use ice to compress itching"
+      ]
+    },
+    {
+      "id": "gerd",
+      "name": "GERD",
+      "category": "disease",
+      "precautions": [
+        "avoid fatty spicy food",
+        "avoid lying down after eating",
+        "maintain healthy weight",
+        "exercise"
+      ]
+    },
+    {
+      "id": "chronic_cholestasis",
+      "name": "Chronic cholestasis",
+      "category": "disease",
+      "precautions": [
+        "cold baths",
+        "anti itch medicine",
+        "consult doctor",
+        "eat healthy"
+      ]
+    },
+    {
+      "id": "drug_reaction",
+      "name": "Drug Reaction",
+      "category": "disease",
+      "precautions": [
+        "stop irritation",
+        "consult nearest hospital",
+        "stop taking drug",
+        "follow up"
+      ]
+    },
+    {
+      "id": "peptic_ulcer_diseae",
+      "name": "Peptic ulcer diseae",
+      "category": "disease",
+      "precautions": [
+        "avoid fatty spicy food",
+        "consume probiotic food",
+        "eliminate milk",
+        "limit alcohol"
+      ]
+    },
+    {
+      "id": "aids",
+      "name": "AIDS",
+      "category": "disease",
+      "precautions": [
+        "avoid open cuts",
+        "wear ppe if possible",
+        "consult doctor",
+        "follow up"
+      ]
+    },
+    {
+      "id": "diabetes",
+      "name": "Diabetes",
+      "category": "disease",
+      "precautions": [
+        "have balanced diet",
+        "exercise",
+        "consult doctor",
+        "follow up"
+      ]
+    },
+    {
+      "id": "gastroenteritis",
+      "name": "Gastroenteritis",
+      "category": "disease",
+      "precautions": [
+        "stop eating solid food for while",
+        "try taking small sips of water",
+        "rest",
+        "ease back into eating"
+      ]
+    },
+    {
+      "id": "bronchial_asthma",
+      "name": "Bronchial Asthma",
+      "category": "disease",
+      "precautions": [
+        "switch to loose cloothing",
+        "take deep breaths",
+        "get away from trigger",
+        "seek help"
+      ]
+    },
+    {
+      "id": "hypertension",
+      "name": "Hypertension",
+      "category": "disease",
+      "precautions": [
+        "meditation",
+        "salt baths",
+        "reduce stress",
+        "get proper sleep"
+      ]
+    },
+    {
+      "id": "migraine",
+      "name": "Migraine",
+      "category": "disease",
+      "precautions": [
+        "meditation",
+        "reduce stress",
+        "use poloroid glasses in sun",
+        "consult doctor"
+      ]
+    },
+    {
+      "id": "cervical_spondylosis",
+      "name": "Cervical spondylosis",
+      "category": "disease",
+      "precautions": [
+        "use heating pad or cold pack",
+        "exercise",
+        "take otc pain reliver",
+        "consult doctor"
+      ]
+    },
+    {
+      "id": "paralysis_brain_hemorrhage",
+      "name": "Paralysis (brain hemorrhage)",
+      "category": "disease",
+      "precautions": [
+        "massage",
+        "eat healthy",
+        "exercise",
+        "consult doctor"
+      ]
+    },
+    {
+      "id": "jaundice",
+      "name": "Jaundice",
+      "category": "disease",
+      "precautions": [
+        "drink plenty of water",
+        "consume milk thistle",
+        "eat fruits and high fiberous food",
+        "medication"
+      ]
+    },
+    {
+      "id": "malaria",
+      "name": "Malaria",
+      "category": "disease",
+      "precautions": [
+        "Consult nearest hospital",
+        "avoid oily food",
+        "avoid non veg food",
+        "keep mosquitos out"
+      ]
+    },
+    {
+      "id": "chicken_pox",
+      "name": "Chicken pox",
+      "category": "disease",
+      "precautions": [
+        "use neem in bathing",
+        "consume neem leaves",
+        "take vaccine",
+        "avoid public places"
+      ]
+    },
+    {
+      "id": "dengue",
+      "name": "Dengue",
+      "category": "disease",
+      "precautions": [
+        "drink papaya leaf juice",
+        "avoid fatty spicy food",
+        "keep mosquitos away",
+        "keep hydrated"
+      ]
+    },
+    {
+      "id": "typhoid",
+      "name": "Typhoid",
+      "category": "disease",
+      "precautions": [
+        "eat high calorie vegitables",
+        "antiboitic therapy",
+        "consult doctor",
+        "medication"
+      ]
+    },
+    {
+      "id": "hepatitis_a",
+      "name": "hepatitis A",
+      "category": "disease",
+      "precautions": [
+        "Consult nearest hospital",
+        "wash hands through",
+        "avoid fatty spicy food",
+        "medication"
+      ]
+    },
+    {
+      "id": "hepatitis_b",
+      "name": "Hepatitis B",
+      "category": "disease",
+      "precautions": [
+        "consult nearest hospital",
+        "vaccination",
+        "eat healthy",
+        "medication"
+      ]
+    },
+    {
+      "id": "hepatitis_c",
+      "name": "Hepatitis C",
+      "category": "disease",
+      "precautions": [
+        "Consult nearest hospital",
+        "vaccination",
+        "eat healthy",
+        "medication"
+      ]
+    },
+    {
+      "id": "hepatitis_d",
+      "name": "Hepatitis D",
+      "category": "disease",
+      "precautions": [
+        "consult doctor",
+        "medication",
+        "eat healthy",
+        "follow up"
+      ]
+    },
+    {
+      "id": "hepatitis_e",
+      "name": "Hepatitis E",
+      "category": "disease",
+      "precautions": [
+        "stop alcohol consumption",
+        "rest",
+        "consult doctor",
+        "medication"
+      ]
+    },
+    {
+      "id": "alcoholic_hepatitis",
+      "name": "Alcoholic hepatitis",
+      "category": "disease",
+      "precautions": [
+        "stop alcohol consumption",
+        "consult doctor",
+        "medication",
+        "follow up"
+      ]
+    },
+    {
+      "id": "tuberculosis",
+      "name": "Tuberculosis",
+      "category": "disease",
+      "precautions": [
+        "cover mouth",
+        "consult doctor",
+        "medication",
+        "rest"
+      ]
+    },
+    {
+      "id": "common_cold",
+      "name": "Common Cold",
+      "category": "disease",
+      "precautions": [
+        "drink vitamin c rich drinks",
+        "take vapour",
+        "avoid cold food",
+        "keep fever in check"
+      ]
+    },
+    {
+      "id": "pneumonia",
+      "name": "Pneumonia",
+      "category": "disease",
+      "precautions": [
+        "consult doctor",
+        "medication",
+        "rest",
+        "follow up"
+      ]
+    },
+    {
+      "id": "dimorphic_hemmorhoids_piles",
+      "name": "Dimorphic hemmorhoids(piles)",
+      "category": "disease",
+      "precautions": [
+        "avoid fatty spicy food",
+        "consume witch hazel",
+        "warm bath with epsom salt",
+        "consume alovera juice"
+      ]
+    },
+    {
+      "id": "heart_attack",
+      "name": "Heart attack",
+      "category": "disease",
+      "precautions": [
+        "call ambulance",
+        "chew or swallow asprin",
+        "keep calm"
+      ]
+    },
+    {
+      "id": "varicose_veins",
+      "name": "Varicose veins",
+      "category": "disease",
+      "precautions": [
+        "lie down flat and raise the leg high",
+        "use oinments",
+        "use vein compression",
+        "dont stand still for long"
+      ]
+    },
+    {
+      "id": "hypothyroidism",
+      "name": "Hypothyroidism",
+      "category": "disease",
+      "precautions": [
+        "reduce stress",
+        "exercise",
+        "eat healthy",
+        "get proper sleep"
+      ]
+    },
+    {
+      "id": "hyperthyroidism",
+      "name": "Hyperthyroidism",
+      "category": "disease",
+      "precautions": [
+        "eat healthy",
+        "massage",
+        "use lemon balm",
+        "take radioactive iodine treatment"
+      ]
+    },
+    {
+      "id": "hypoglycemia",
+      "name": "Hypoglycemia",
+      "category": "disease",
+      "precautions": [
+        "lie down on side",
+        "check in pulse",
+        "drink sugary drinks",
+        "consult doctor"
+      ]
+    },
+    {
+      "id": "osteoarthristis",
+      "name": "Osteoarthristis",
+      "category": "disease",
+      "precautions": [
+        "acetaminophen",
+        "consult nearest hospital",
+        "follow up",
+        "salt baths"
+      ]
+    },
+    {
+      "id": "arthritis",
+      "name": "Arthritis",
+      "category": "disease",
+      "precautions": [
+        "exercise",
+        "use hot and cold therapy",
+        "try acupuncture",
+        "massage"
+      ]
+    },
+    {
+      "id": "vertigo_paroymsal_positional_vertigo",
+      "name": "(vertigo) Paroymsal  Positional Vertigo",
+      "category": "disease",
+      "precautions": [
+        "lie down",
+        "avoid sudden change in body",
+        "avoid abrupt head movment",
+        "relax"
+      ]
+    },
+    {
+      "id": "acne",
+      "name": "Acne",
+      "category": "disease",
+      "precautions": [
+        "bath twice",
+        "avoid fatty spicy food",
+        "drink plenty of water",
+        "avoid too many products"
+      ]
+    },
+    {
+      "id": "urinary_tract_infection",
+      "name": "Urinary tract infection",
+      "category": "disease",
+      "precautions": [
+        "drink plenty of water",
+        "increase vitamin c intake",
+        "drink cranberry juice",
+        "take probiotics"
+      ]
+    },
+    {
+      "id": "psoriasis",
+      "name": "Psoriasis",
+      "category": "disease",
+      "precautions": [
+        "wash hands with warm soapy water",
+        "stop bleeding using pressure",
+        "consult doctor",
+        "salt baths"
+      ]
+    },
+    {
+      "id": "impetigo",
+      "name": "Impetigo",
+      "category": "disease",
+      "precautions": [
+        "soak affected area in warm water",
+        "use antibiotics",
+        "remove scabs with wet compressed cloth",
+        "consult doctor"
+      ]
+    },
+    {
+      "id": "itching",
+      "name": "itching",
+      "category": "symptom"
+    },
+    {
+      "id": "skin_rash",
+      "name": "skin_rash",
+      "category": "symptom"
+    },
+    {
+      "id": "nodal_skin_eruptions",
+      "name": "nodal_skin_eruptions",
+      "category": "symptom"
+    },
+    {
+      "id": "dischromic_patches",
+      "name": "dischromic _patches",
+      "category": "symptom"
+    },
+    {
+      "id": "continuous_sneezing",
+      "name": "continuous_sneezing",
+      "category": "symptom"
+    },
+    {
+      "id": "shivering",
+      "name": "shivering",
+      "category": "symptom"
+    },
+    {
+      "id": "chills",
+      "name": "chills",
+      "category": "symptom"
+    },
+    {
+      "id": "watering_from_eyes",
+      "name": "watering_from_eyes",
+      "category": "symptom"
+    },
+    {
+      "id": "stomach_pain",
+      "name": "stomach_pain",
+      "category": "symptom"
+    },
+    {
+      "id": "acidity",
+      "name": "acidity",
+      "category": "symptom"
+    },
+    {
+      "id": "ulcers_on_tongue",
+      "name": "ulcers_on_tongue",
+      "category": "symptom"
+    },
+    {
+      "id": "vomiting",
+      "name": "vomiting",
+      "category": "symptom"
+    },
+    {
+      "id": "cough",
+      "name": "cough",
+      "category": "symptom"
+    },
+    {
+      "id": "chest_pain",
+      "name": "chest_pain",
+      "category": "symptom"
+    },
+    {
+      "id": "yellowish_skin",
+      "name": "yellowish_skin",
+      "category": "symptom"
+    },
+    {
+      "id": "nausea",
+      "name": "nausea",
+      "category": "symptom"
+    },
+    {
+      "id": "loss_of_appetite",
+      "name": "loss_of_appetite",
+      "category": "symptom"
+    },
+    {
+      "id": "abdominal_pain",
+      "name": "abdominal_pain",
+      "category": "symptom"
+    },
+    {
+      "id": "yellowing_of_eyes",
+      "name": "yellowing_of_eyes",
+      "category": "symptom"
+    },
+    {
+      "id": "burning_micturition",
+      "name": "burning_micturition",
+      "category": "symptom"
+    },
+    {
+      "id": "spotting_urination",
+      "name": "spotting_ urination",
+      "category": "symptom"
+    },
+    {
+      "id": "passage_of_gases",
+      "name": "passage_of_gases",
+      "category": "symptom"
+    },
+    {
+      "id": "internal_itching",
+      "name": "internal_itching",
+      "category": "symptom"
+    },
+    {
+      "id": "indigestion",
+      "name": "indigestion",
+      "category": "symptom"
+    },
+    {
+      "id": "muscle_wasting",
+      "name": "muscle_wasting",
+      "category": "symptom"
+    },
+    {
+      "id": "patches_in_throat",
+      "name": "patches_in_throat",
+      "category": "symptom"
+    },
+    {
+      "id": "high_fever",
+      "name": "high_fever",
+      "category": "symptom"
+    },
+    {
+      "id": "extra_marital_contacts",
+      "name": "extra_marital_contacts",
+      "category": "symptom"
+    },
+    {
+      "id": "fatigue",
+      "name": "fatigue",
+      "category": "symptom"
+    },
+    {
+      "id": "weight_loss",
+      "name": "weight_loss",
+      "category": "symptom"
+    },
+    {
+      "id": "restlessness",
+      "name": "restlessness",
+      "category": "symptom"
+    },
+    {
+      "id": "lethargy",
+      "name": "lethargy",
+      "category": "symptom"
+    },
+    {
+      "id": "irregular_sugar_level",
+      "name": "irregular_sugar_level",
+      "category": "symptom"
+    },
+    {
+      "id": "blurred_and_distorted_vision",
+      "name": "blurred_and_distorted_vision",
+      "category": "symptom"
+    },
+    {
+      "id": "obesity",
+      "name": "obesity",
+      "category": "symptom"
+    },
+    {
+      "id": "excessive_hunger",
+      "name": "excessive_hunger",
+      "category": "symptom"
+    },
+    {
+      "id": "increased_appetite",
+      "name": "increased_appetite",
+      "category": "symptom"
+    },
+    {
+      "id": "polyuria",
+      "name": "polyuria",
+      "category": "symptom"
+    },
+    {
+      "id": "sunken_eyes",
+      "name": "sunken_eyes",
+      "category": "symptom"
+    },
+    {
+      "id": "dehydration",
+      "name": "dehydration",
+      "category": "symptom"
+    },
+    {
+      "id": "diarrhoea",
+      "name": "diarrhoea",
+      "category": "symptom"
+    },
+    {
+      "id": "breathlessness",
+      "name": "breathlessness",
+      "category": "symptom"
+    },
+    {
+      "id": "family_history",
+      "name": "family_history",
+      "category": "symptom"
+    },
+    {
+      "id": "mucoid_sputum",
+      "name": "mucoid_sputum",
+      "category": "symptom"
+    },
+    {
+      "id": "headache",
+      "name": "headache",
+      "category": "symptom"
+    },
+    {
+      "id": "dizziness",
+      "name": "dizziness",
+      "category": "symptom"
+    },
+    {
+      "id": "loss_of_balance",
+      "name": "loss_of_balance",
+      "category": "symptom"
+    },
+    {
+      "id": "lack_of_concentration",
+      "name": "lack_of_concentration",
+      "category": "symptom"
+    },
+    {
+      "id": "stiff_neck",
+      "name": "stiff_neck",
+      "category": "symptom"
+    },
+    {
+      "id": "depression",
+      "name": "depression",
+      "category": "symptom"
+    },
+    {
+      "id": "irritability",
+      "name": "irritability",
+      "category": "symptom"
+    },
+    {
+      "id": "visual_disturbances",
+      "name": "visual_disturbances",
+      "category": "symptom"
+    },
+    {
+      "id": "back_pain",
+      "name": "back_pain",
+      "category": "symptom"
+    },
+    {
+      "id": "weakness_in_limbs",
+      "name": "weakness_in_limbs",
+      "category": "symptom"
+    },
+    {
+      "id": "neck_pain",
+      "name": "neck_pain",
+      "category": "symptom"
+    },
+    {
+      "id": "weakness_of_one_body_side",
+      "name": "weakness_of_one_body_side",
+      "category": "symptom"
+    },
+    {
+      "id": "altered_sensorium",
+      "name": "altered_sensorium",
+      "category": "symptom"
+    },
+    {
+      "id": "dark_urine",
+      "name": "dark_urine",
+      "category": "symptom"
+    },
+    {
+      "id": "sweating",
+      "name": "sweating",
+      "category": "symptom"
+    },
+    {
+      "id": "muscle_pain",
+      "name": "muscle_pain",
+      "category": "symptom"
+    },
+    {
+      "id": "mild_fever",
+      "name": "mild_fever",
+      "category": "symptom"
+    },
+    {
+      "id": "swelled_lymph_nodes",
+      "name": "swelled_lymph_nodes",
+      "category": "symptom"
+    },
+    {
+      "id": "malaise",
+      "name": "malaise",
+      "category": "symptom"
+    },
+    {
+      "id": "red_spots_over_body",
+      "name": "red_spots_over_body",
+      "category": "symptom"
+    },
+    {
+      "id": "joint_pain",
+      "name": "joint_pain",
+      "category": "symptom"
+    },
+    {
+      "id": "pain_behind_the_eyes",
+      "name": "pain_behind_the_eyes",
+      "category": "symptom"
+    },
+    {
+      "id": "constipation",
+      "name": "constipation",
+      "category": "symptom"
+    },
+    {
+      "id": "toxic_look_typhos",
+      "name": "toxic_look_(typhos)",
+      "category": "symptom"
+    },
+    {
+      "id": "belly_pain",
+      "name": "belly_pain",
+      "category": "symptom"
+    },
+    {
+      "id": "yellow_urine",
+      "name": "yellow_urine",
+      "category": "symptom"
+    },
+    {
+      "id": "receiving_blood_transfusion",
+      "name": "receiving_blood_transfusion",
+      "category": "symptom"
+    },
+    {
+      "id": "receiving_unsterile_injections",
+      "name": "receiving_unsterile_injections",
+      "category": "symptom"
+    },
+    {
+      "id": "coma",
+      "name": "coma",
+      "category": "symptom"
+    },
+    {
+      "id": "stomach_bleeding",
+      "name": "stomach_bleeding",
+      "category": "symptom"
+    },
+    {
+      "id": "acute_liver_failure",
+      "name": "acute_liver_failure",
+      "category": "symptom"
+    },
+    {
+      "id": "swelling_of_stomach",
+      "name": "swelling_of_stomach",
+      "category": "symptom"
+    },
+    {
+      "id": "distention_of_abdomen",
+      "name": "distention_of_abdomen",
+      "category": "symptom"
+    },
+    {
+      "id": "history_of_alcohol_consumption",
+      "name": "history_of_alcohol_consumption",
+      "category": "symptom"
+    },
+    {
+      "id": "fluid_overload",
+      "name": "fluid_overload",
+      "category": "symptom"
+    },
+    {
+      "id": "phlegm",
+      "name": "phlegm",
+      "category": "symptom"
+    },
+    {
+      "id": "blood_in_sputum",
+      "name": "blood_in_sputum",
+      "category": "symptom"
+    },
+    {
+      "id": "throat_irritation",
+      "name": "throat_irritation",
+      "category": "symptom"
+    },
+    {
+      "id": "redness_of_eyes",
+      "name": "redness_of_eyes",
+      "category": "symptom"
+    },
+    {
+      "id": "sinus_pressure",
+      "name": "sinus_pressure",
+      "category": "symptom"
+    },
+    {
+      "id": "runny_nose",
+      "name": "runny_nose",
+      "category": "symptom"
+    },
+    {
+      "id": "congestion",
+      "name": "congestion",
+      "category": "symptom"
+    },
+    {
+      "id": "loss_of_smell",
+      "name": "loss_of_smell",
+      "category": "symptom"
+    },
+    {
+      "id": "fast_heart_rate",
+      "name": "fast_heart_rate",
+      "category": "symptom"
+    },
+    {
+      "id": "rusty_sputum",
+      "name": "rusty_sputum",
+      "category": "symptom"
+    },
+    {
+      "id": "pain_during_bowel_movements",
+      "name": "pain_during_bowel_movements",
+      "category": "symptom"
+    },
+    {
+      "id": "pain_in_anal_region",
+      "name": "pain_in_anal_region",
+      "category": "symptom"
+    },
+    {
+      "id": "bloody_stool",
+      "name": "bloody_stool",
+      "category": "symptom"
+    },
+    {
+      "id": "irritation_in_anus",
+      "name": "irritation_in_anus",
+      "category": "symptom"
+    },
+    {
+      "id": "cramps",
+      "name": "cramps",
+      "category": "symptom"
+    },
+    {
+      "id": "bruising",
+      "name": "bruising",
+      "category": "symptom"
+    },
+    {
+      "id": "swollen_legs",
+      "name": "swollen_legs",
+      "category": "symptom"
+    },
+    {
+      "id": "swollen_blood_vessels",
+      "name": "swollen_blood_vessels",
+      "category": "symptom"
+    },
+    {
+      "id": "prominent_veins_on_calf",
+      "name": "prominent_veins_on_calf",
+      "category": "symptom"
+    },
+    {
+      "id": "weight_gain",
+      "name": "weight_gain",
+      "category": "symptom"
+    },
+    {
+      "id": "cold_hands_and_feets",
+      "name": "cold_hands_and_feets",
+      "category": "symptom"
+    },
+    {
+      "id": "mood_swings",
+      "name": "mood_swings",
+      "category": "symptom"
+    },
+    {
+      "id": "puffy_face_and_eyes",
+      "name": "puffy_face_and_eyes",
+      "category": "symptom"
+    },
+    {
+      "id": "enlarged_thyroid",
+      "name": "enlarged_thyroid",
+      "category": "symptom"
+    },
+    {
+      "id": "brittle_nails",
+      "name": "brittle_nails",
+      "category": "symptom"
+    },
+    {
+      "id": "swollen_extremeties",
+      "name": "swollen_extremeties",
+      "category": "symptom"
+    },
+    {
+      "id": "abnormal_menstruation",
+      "name": "abnormal_menstruation",
+      "category": "symptom"
+    },
+    {
+      "id": "muscle_weakness",
+      "name": "muscle_weakness",
+      "category": "symptom"
+    },
+    {
+      "id": "anxiety",
+      "name": "anxiety",
+      "category": "symptom"
+    },
+    {
+      "id": "slurred_speech",
+      "name": "slurred_speech",
+      "category": "symptom"
+    },
+    {
+      "id": "palpitations",
+      "name": "palpitations",
+      "category": "symptom"
+    },
+    {
+      "id": "drying_and_tingling_lips",
+      "name": "drying_and_tingling_lips",
+      "category": "symptom"
+    },
+    {
+      "id": "knee_pain",
+      "name": "knee_pain",
+      "category": "symptom"
+    },
+    {
+      "id": "hip_joint_pain",
+      "name": "hip_joint_pain",
+      "category": "symptom"
+    },
+    {
+      "id": "swelling_joints",
+      "name": "swelling_joints",
+      "category": "symptom"
+    },
+    {
+      "id": "painful_walking",
+      "name": "painful_walking",
+      "category": "symptom"
+    },
+    {
+      "id": "movement_stiffness",
+      "name": "movement_stiffness",
+      "category": "symptom"
+    },
+    {
+      "id": "spinning_movements",
+      "name": "spinning_movements",
+      "category": "symptom"
+    },
+    {
+      "id": "unsteadiness",
+      "name": "unsteadiness",
+      "category": "symptom"
+    },
+    {
+      "id": "pus_filled_pimples",
+      "name": "pus_filled_pimples",
+      "category": "symptom"
+    },
+    {
+      "id": "blackheads",
+      "name": "blackheads",
+      "category": "symptom"
+    },
+    {
+      "id": "scurring",
+      "name": "scurring",
+      "category": "symptom"
+    },
+    {
+      "id": "bladder_discomfort",
+      "name": "bladder_discomfort",
+      "category": "symptom"
+    },
+    {
+      "id": "foul_smell_of_urine",
+      "name": "foul_smell_of urine",
+      "category": "symptom"
+    },
+    {
+      "id": "continuous_feel_of_urine",
+      "name": "continuous_feel_of_urine",
+      "category": "symptom"
+    },
+    {
+      "id": "skin_peeling",
+      "name": "skin_peeling",
+      "category": "symptom"
+    },
+    {
+      "id": "silver_like_dusting",
+      "name": "silver_like_dusting",
+      "category": "symptom"
+    },
+    {
+      "id": "small_dents_in_nails",
+      "name": "small_dents_in_nails",
+      "category": "symptom"
+    },
+    {
+      "id": "inflammatory_nails",
+      "name": "inflammatory_nails",
+      "category": "symptom"
+    },
+    {
+      "id": "blister",
+      "name": "blister",
+      "category": "symptom"
+    },
+    {
+      "id": "red_sore_around_nose",
+      "name": "red_sore_around_nose",
+      "category": "symptom"
+    },
+    {
+      "id": "yellow_crust_ooze",
+      "name": "yellow_crust_ooze",
+      "category": "symptom"
+    }
+  ],
+  "edges": [
+    {
+      "source": "fungal_infection",
+      "target": "itching",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "fungal_infection",
+      "target": "skin_rash",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "fungal_infection",
+      "target": "nodal_skin_eruptions",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "fungal_infection",
+      "target": "dischromic_patches",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "allergy",
+      "target": "continuous_sneezing",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "allergy",
+      "target": "shivering",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "allergy",
+      "target": "chills",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "allergy",
+      "target": "watering_from_eyes",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "gerd",
+      "target": "stomach_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "gerd",
+      "target": "acidity",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "gerd",
+      "target": "ulcers_on_tongue",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "gerd",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "gerd",
+      "target": "cough",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "gerd",
+      "target": "chest_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chronic_cholestasis",
+      "target": "itching",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chronic_cholestasis",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chronic_cholestasis",
+      "target": "yellowish_skin",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chronic_cholestasis",
+      "target": "nausea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chronic_cholestasis",
+      "target": "loss_of_appetite",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chronic_cholestasis",
+      "target": "abdominal_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chronic_cholestasis",
+      "target": "yellowing_of_eyes",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "drug_reaction",
+      "target": "itching",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "drug_reaction",
+      "target": "skin_rash",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "drug_reaction",
+      "target": "stomach_pain",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "drug_reaction",
+      "target": "burning_micturition",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "drug_reaction",
+      "target": "spotting_urination",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "peptic_ulcer_diseae",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "peptic_ulcer_diseae",
+      "target": "loss_of_appetite",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "peptic_ulcer_diseae",
+      "target": "abdominal_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "peptic_ulcer_diseae",
+      "target": "passage_of_gases",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "peptic_ulcer_diseae",
+      "target": "internal_itching",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "peptic_ulcer_diseae",
+      "target": "indigestion",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "aids",
+      "target": "muscle_wasting",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "aids",
+      "target": "patches_in_throat",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "aids",
+      "target": "high_fever",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "aids",
+      "target": "extra_marital_contacts",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "diabetes",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "diabetes",
+      "target": "weight_loss",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "diabetes",
+      "target": "restlessness",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "diabetes",
+      "target": "lethargy",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "diabetes",
+      "target": "irregular_sugar_level",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "diabetes",
+      "target": "blurred_and_distorted_vision",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "diabetes",
+      "target": "obesity",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "diabetes",
+      "target": "excessive_hunger",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "diabetes",
+      "target": "increased_appetite",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "diabetes",
+      "target": "polyuria",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "gastroenteritis",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "gastroenteritis",
+      "target": "sunken_eyes",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "gastroenteritis",
+      "target": "dehydration",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "gastroenteritis",
+      "target": "diarrhoea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "bronchial_asthma",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "bronchial_asthma",
+      "target": "cough",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "bronchial_asthma",
+      "target": "high_fever",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "bronchial_asthma",
+      "target": "breathlessness",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "bronchial_asthma",
+      "target": "family_history",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "bronchial_asthma",
+      "target": "mucoid_sputum",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypertension",
+      "target": "headache",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "hypertension",
+      "target": "chest_pain",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "hypertension",
+      "target": "dizziness",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "hypertension",
+      "target": "loss_of_balance",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypertension",
+      "target": "lack_of_concentration",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "migraine",
+      "target": "acidity",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "migraine",
+      "target": "indigestion",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "migraine",
+      "target": "headache",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "migraine",
+      "target": "blurred_and_distorted_vision",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "migraine",
+      "target": "excessive_hunger",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "migraine",
+      "target": "stiff_neck",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "migraine",
+      "target": "depression",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "migraine",
+      "target": "irritability",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "migraine",
+      "target": "visual_disturbances",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "cervical_spondylosis",
+      "target": "back_pain",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "cervical_spondylosis",
+      "target": "weakness_in_limbs",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "cervical_spondylosis",
+      "target": "neck_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "cervical_spondylosis",
+      "target": "dizziness",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "cervical_spondylosis",
+      "target": "loss_of_balance",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "paralysis_brain_hemorrhage",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "paralysis_brain_hemorrhage",
+      "target": "headache",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "paralysis_brain_hemorrhage",
+      "target": "weakness_of_one_body_side",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "paralysis_brain_hemorrhage",
+      "target": "altered_sensorium",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "jaundice",
+      "target": "itching",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "jaundice",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "jaundice",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "jaundice",
+      "target": "weight_loss",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "jaundice",
+      "target": "high_fever",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "jaundice",
+      "target": "yellowish_skin",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "jaundice",
+      "target": "dark_urine",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "jaundice",
+      "target": "abdominal_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "malaria",
+      "target": "chills",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "malaria",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "malaria",
+      "target": "high_fever",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "malaria",
+      "target": "sweating",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "malaria",
+      "target": "headache",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "malaria",
+      "target": "nausea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "malaria",
+      "target": "muscle_pain",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "malaria",
+      "target": "diarrhoea",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "chicken_pox",
+      "target": "itching",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chicken_pox",
+      "target": "skin_rash",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chicken_pox",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chicken_pox",
+      "target": "lethargy",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chicken_pox",
+      "target": "high_fever",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chicken_pox",
+      "target": "headache",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chicken_pox",
+      "target": "loss_of_appetite",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chicken_pox",
+      "target": "mild_fever",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chicken_pox",
+      "target": "swelled_lymph_nodes",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "chicken_pox",
+      "target": "malaise",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "chicken_pox",
+      "target": "red_spots_over_body",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "dengue",
+      "target": "skin_rash",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dengue",
+      "target": "chills",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dengue",
+      "target": "joint_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dengue",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dengue",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dengue",
+      "target": "high_fever",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dengue",
+      "target": "headache",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "dengue",
+      "target": "nausea",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "dengue",
+      "target": "loss_of_appetite",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "dengue",
+      "target": "pain_behind_the_eyes",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "dengue",
+      "target": "back_pain",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "dengue",
+      "target": "muscle_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dengue",
+      "target": "red_spots_over_body",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dengue",
+      "target": "malaise",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "typhoid",
+      "target": "chills",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "typhoid",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "typhoid",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "typhoid",
+      "target": "high_fever",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "typhoid",
+      "target": "nausea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "typhoid",
+      "target": "constipation",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "typhoid",
+      "target": "abdominal_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "typhoid",
+      "target": "diarrhoea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "typhoid",
+      "target": "toxic_look_typhos",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "typhoid",
+      "target": "belly_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "typhoid",
+      "target": "headache",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_a",
+      "target": "joint_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_a",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_a",
+      "target": "yellowish_skin",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_a",
+      "target": "dark_urine",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_a",
+      "target": "nausea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_a",
+      "target": "loss_of_appetite",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_a",
+      "target": "abdominal_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_a",
+      "target": "diarrhoea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_a",
+      "target": "mild_fever",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hepatitis_a",
+      "target": "yellowing_of_eyes",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hepatitis_a",
+      "target": "muscle_pain",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hepatitis_b",
+      "target": "itching",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_b",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_b",
+      "target": "lethargy",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_b",
+      "target": "yellowish_skin",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_b",
+      "target": "dark_urine",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_b",
+      "target": "loss_of_appetite",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_b",
+      "target": "abdominal_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_b",
+      "target": "yellow_urine",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_b",
+      "target": "yellowing_of_eyes",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hepatitis_b",
+      "target": "malaise",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hepatitis_b",
+      "target": "receiving_blood_transfusion",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hepatitis_b",
+      "target": "receiving_unsterile_injections",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hepatitis_c",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_c",
+      "target": "yellowish_skin",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_c",
+      "target": "nausea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_c",
+      "target": "loss_of_appetite",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_c",
+      "target": "family_history",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_c",
+      "target": "yellowing_of_eyes",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "hepatitis_d",
+      "target": "joint_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_d",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_d",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_d",
+      "target": "yellowish_skin",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_d",
+      "target": "dark_urine",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_d",
+      "target": "nausea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_d",
+      "target": "loss_of_appetite",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_d",
+      "target": "abdominal_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_d",
+      "target": "yellowing_of_eyes",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "joint_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "high_fever",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "yellowish_skin",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "dark_urine",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "nausea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "loss_of_appetite",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "abdominal_pain",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "yellowing_of_eyes",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "coma",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "stomach_bleeding",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hepatitis_e",
+      "target": "acute_liver_failure",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "alcoholic_hepatitis",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "alcoholic_hepatitis",
+      "target": "yellowish_skin",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "alcoholic_hepatitis",
+      "target": "abdominal_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "alcoholic_hepatitis",
+      "target": "swelling_of_stomach",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "alcoholic_hepatitis",
+      "target": "distention_of_abdomen",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "alcoholic_hepatitis",
+      "target": "history_of_alcohol_consumption",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "alcoholic_hepatitis",
+      "target": "fluid_overload",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "tuberculosis",
+      "target": "chills",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "tuberculosis",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "tuberculosis",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "tuberculosis",
+      "target": "weight_loss",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "tuberculosis",
+      "target": "cough",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "tuberculosis",
+      "target": "high_fever",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "tuberculosis",
+      "target": "breathlessness",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "tuberculosis",
+      "target": "sweating",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "tuberculosis",
+      "target": "loss_of_appetite",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "tuberculosis",
+      "target": "mild_fever",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "tuberculosis",
+      "target": "yellowing_of_eyes",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "tuberculosis",
+      "target": "swelled_lymph_nodes",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "tuberculosis",
+      "target": "malaise",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "tuberculosis",
+      "target": "phlegm",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "tuberculosis",
+      "target": "chest_pain",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "tuberculosis",
+      "target": "blood_in_sputum",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "common_cold",
+      "target": "continuous_sneezing",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "common_cold",
+      "target": "chills",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "common_cold",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "common_cold",
+      "target": "cough",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "common_cold",
+      "target": "high_fever",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "common_cold",
+      "target": "headache",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "common_cold",
+      "target": "swelled_lymph_nodes",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "common_cold",
+      "target": "malaise",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "common_cold",
+      "target": "phlegm",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "common_cold",
+      "target": "throat_irritation",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "common_cold",
+      "target": "redness_of_eyes",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "common_cold",
+      "target": "sinus_pressure",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "common_cold",
+      "target": "runny_nose",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "common_cold",
+      "target": "congestion",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "common_cold",
+      "target": "chest_pain",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "common_cold",
+      "target": "loss_of_smell",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "common_cold",
+      "target": "muscle_pain",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "pneumonia",
+      "target": "chills",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "pneumonia",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "pneumonia",
+      "target": "cough",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "pneumonia",
+      "target": "high_fever",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "pneumonia",
+      "target": "breathlessness",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "pneumonia",
+      "target": "sweating",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "pneumonia",
+      "target": "malaise",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "pneumonia",
+      "target": "chest_pain",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "pneumonia",
+      "target": "fast_heart_rate",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "pneumonia",
+      "target": "rusty_sputum",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "pneumonia",
+      "target": "phlegm",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dimorphic_hemmorhoids_piles",
+      "target": "constipation",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dimorphic_hemmorhoids_piles",
+      "target": "pain_during_bowel_movements",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dimorphic_hemmorhoids_piles",
+      "target": "pain_in_anal_region",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dimorphic_hemmorhoids_piles",
+      "target": "bloody_stool",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "dimorphic_hemmorhoids_piles",
+      "target": "irritation_in_anus",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "heart_attack",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "heart_attack",
+      "target": "breathlessness",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "heart_attack",
+      "target": "sweating",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "heart_attack",
+      "target": "chest_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "varicose_veins",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "varicose_veins",
+      "target": "cramps",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "varicose_veins",
+      "target": "bruising",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "varicose_veins",
+      "target": "obesity",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "varicose_veins",
+      "target": "swollen_legs",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "varicose_veins",
+      "target": "swollen_blood_vessels",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "varicose_veins",
+      "target": "prominent_veins_on_calf",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "weight_gain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "cold_hands_and_feets",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "mood_swings",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "lethargy",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "dizziness",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "puffy_face_and_eyes",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "enlarged_thyroid",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "brittle_nails",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "swollen_extremeties",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "depression",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "irritability",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hypothyroidism",
+      "target": "abnormal_menstruation",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hyperthyroidism",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hyperthyroidism",
+      "target": "mood_swings",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hyperthyroidism",
+      "target": "weight_loss",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hyperthyroidism",
+      "target": "restlessness",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hyperthyroidism",
+      "target": "sweating",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hyperthyroidism",
+      "target": "diarrhoea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hyperthyroidism",
+      "target": "fast_heart_rate",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hyperthyroidism",
+      "target": "excessive_hunger",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hyperthyroidism",
+      "target": "muscle_weakness",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hyperthyroidism",
+      "target": "irritability",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hyperthyroidism",
+      "target": "abnormal_menstruation",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hypoglycemia",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypoglycemia",
+      "target": "fatigue",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypoglycemia",
+      "target": "anxiety",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypoglycemia",
+      "target": "sweating",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypoglycemia",
+      "target": "headache",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypoglycemia",
+      "target": "nausea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypoglycemia",
+      "target": "blurred_and_distorted_vision",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "hypoglycemia",
+      "target": "excessive_hunger",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hypoglycemia",
+      "target": "slurred_speech",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hypoglycemia",
+      "target": "irritability",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hypoglycemia",
+      "target": "palpitations",
+      "type": "symptom_of",
+      "weight": 1
+    },
+    {
+      "source": "hypoglycemia",
+      "target": "drying_and_tingling_lips",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "osteoarthristis",
+      "target": "joint_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "osteoarthristis",
+      "target": "neck_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "osteoarthristis",
+      "target": "knee_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "osteoarthristis",
+      "target": "hip_joint_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "osteoarthristis",
+      "target": "swelling_joints",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "osteoarthristis",
+      "target": "painful_walking",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "arthritis",
+      "target": "muscle_weakness",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "arthritis",
+      "target": "stiff_neck",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "arthritis",
+      "target": "swelling_joints",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "arthritis",
+      "target": "movement_stiffness",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "arthritis",
+      "target": "painful_walking",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "vertigo_paroymsal_positional_vertigo",
+      "target": "vomiting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "vertigo_paroymsal_positional_vertigo",
+      "target": "headache",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "vertigo_paroymsal_positional_vertigo",
+      "target": "nausea",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "vertigo_paroymsal_positional_vertigo",
+      "target": "spinning_movements",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "vertigo_paroymsal_positional_vertigo",
+      "target": "loss_of_balance",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "vertigo_paroymsal_positional_vertigo",
+      "target": "unsteadiness",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "acne",
+      "target": "skin_rash",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "acne",
+      "target": "pus_filled_pimples",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "acne",
+      "target": "blackheads",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "acne",
+      "target": "scurring",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "urinary_tract_infection",
+      "target": "burning_micturition",
+      "type": "symptom_of",
+      "weight": 0.9
+    },
+    {
+      "source": "urinary_tract_infection",
+      "target": "bladder_discomfort",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "urinary_tract_infection",
+      "target": "foul_smell_of_urine",
+      "type": "symptom_of",
+      "weight": 0.85
+    },
+    {
+      "source": "urinary_tract_infection",
+      "target": "continuous_feel_of_urine",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "psoriasis",
+      "target": "skin_rash",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "psoriasis",
+      "target": "joint_pain",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "psoriasis",
+      "target": "skin_peeling",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "psoriasis",
+      "target": "silver_like_dusting",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "psoriasis",
+      "target": "small_dents_in_nails",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "psoriasis",
+      "target": "inflammatory_nails",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "impetigo",
+      "target": "skin_rash",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "impetigo",
+      "target": "high_fever",
+      "type": "symptom_of",
+      "weight": 0.85
+    },
+    {
+      "source": "impetigo",
+      "target": "blister",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "impetigo",
+      "target": "red_sore_around_nose",
+      "type": "symptom_of",
+      "weight": 0.95
+    },
+    {
+      "source": "impetigo",
+      "target": "yellow_crust_ooze",
+      "type": "symptom_of",
+      "weight": 0.95
+    }
+  ]
+}

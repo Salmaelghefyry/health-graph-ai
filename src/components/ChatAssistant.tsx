@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/i18n/LanguageContext';
 import { MessageCircle, Send, X, Bot, User, Sparkles } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
@@ -17,19 +18,26 @@ interface ChatAssistantProps {
 }
 
 export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantProps) => {
+  const { t, language } = useLanguage();
+
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      role: 'assistant',
-      content: "Hello! I'm your medical AI assistant. I can help you understand the disease predictions, explain relationships in the medical graph, and provide context for the recommendations. How can I help you today?",
-      timestamp: new Date(),
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+
+  // Initialize localized welcome message and update on language change
+  useEffect(() => {
+    setMessages([
+      {
+        id: '1',
+        role: 'assistant',
+        content: t.chat.welcome,
+        timestamp: new Date(),
+      },
+    ]);
+  }, [t.chat.welcome]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -65,11 +73,13 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          'Accept-Language': language,
         },
         body: JSON.stringify({
           messages: chatMessages,
           predictions,
           conditions: activeConditions,
+          language,
         }),
       });
 
@@ -124,8 +134,8 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
     } catch (error: any) {
       console.error('Chat error:', error);
       toast({
-        title: 'Chat Error',
-        description: error.message || 'Failed to get response',
+        title: t.chat.title,
+        description: error.message || t.chat.error,
         variant: 'destructive',
       });
       
@@ -133,7 +143,7 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
       setMessages(prev => [...prev, {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: "I'm sorry, I encountered an error. Please try again later.",
+        content: t.chat.error,
         timestamp: new Date(),
       }]);
     } finally {
@@ -170,8 +180,8 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
             <Sparkles className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <h3 className="font-display font-semibold text-sm">Medical AI Assistant</h3>
-            <p className="text-xs text-muted-foreground">Explain predictions & graph relationships</p>
+            <h3 className="font-display font-semibold text-sm">{t.chat.title}</h3>
+            <p className="text-xs text-muted-foreground">{t.chat.subtitle}</p>
           </div>
         </div>
 
@@ -229,7 +239,7 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-              placeholder="Ask about predictions..."
+              placeholder={t.chat.placeholder}
               className="flex-1 bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
               disabled={isTyping}
             />

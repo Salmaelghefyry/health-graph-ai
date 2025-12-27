@@ -140,6 +140,11 @@ export interface Translations {
   graph: {
     title: string;
     legend: string;
+    status: string;
+    nodesLabel: string;
+    edgesLabel: string;
+    errorLabel: string;
+    neutralLabel: string;
     riskLevels: {
       high: string;
       medium: string;
@@ -165,7 +170,10 @@ export interface Translations {
     medium: string;
     low: string;
     reasoning: string;
+    foundRiskFactors: string;
   };
+  // Domain data: disease display names (map canonical ids to localized names)
+  diseases: Record<string, string>;
   // Recommendations
   recommendations: {
     title: string;
@@ -328,6 +336,7 @@ export const translations: Record<Language, Translations> = {
       symptomsSelected: 'symptoms selected',
       analyzeRisk: 'Analyze Risk Profile',
       analyzing: 'Analyzing...',
+      selectAtLeastOne: 'Please select at least one condition or symptom.',
       conditionsList: {
         diabetes: 'Diabetes',
         hypertension: 'Hypertension',
@@ -376,10 +385,16 @@ export const translations: Record<Language, Translations> = {
       analyzing: 'Analyzing...',
       analyzed: 'Analysis complete',
       remove: 'Remove',
+      signInToAnalyze: 'Sign in to analyze files',
     },
     graph: {
       title: 'Cardiovascular Disease Network',
       legend: 'Risk Levels',
+      status: 'Graph status',
+      nodesLabel: 'Nodes',
+      edgesLabel: 'Edges',
+      errorLabel: 'Error',
+      neutralLabel: 'Neutral',
       riskLevels: {
         high: 'High Risk',
         medium: 'Medium Risk',
@@ -396,6 +411,7 @@ export const translations: Record<Language, Translations> = {
     predictions: {
       title: 'Risk Predictions',
       analyzing: 'Analyzing patient data...',
+      runningModel: 'Running GNN prediction model',
       noPredictions: 'Predictions will appear here after analysis',
       probability: 'Probability',
       pathway: 'Progression Pathway',
@@ -404,6 +420,14 @@ export const translations: Record<Language, Translations> = {
       medium: 'Medium',
       low: 'Low',
       reasoning: 'Clinical Reasoning',
+      foundRiskFactors: 'Found {count} potential risk factors.',
+    },
+    diseases: {
+      hypertension: 'Hypertension',
+      sleep_apnea: 'Sleep Apnea',
+      heart_disease: 'Heart Disease',
+      stroke: 'Stroke',
+      diabetes: 'Diabetes'
     },
     recommendations: {
       title: 'Personalized Recommendations',
@@ -422,6 +446,7 @@ export const translations: Record<Language, Translations> = {
     },
     chat: {
       title: 'Medical AI Assistant',
+      subtitle: 'Explain predictions & graph relationships',
       placeholder: 'Ask about your results...',
       welcome: "Hello! I'm your medical AI assistant. I can help you understand the disease predictions, explain relationships in the medical graph, and provide context for the recommendations. How can I help you today?",
       typing: 'Thinking...',
@@ -559,6 +584,7 @@ export const translations: Record<Language, Translations> = {
       symptomsSelected: 'symptômes sélectionnés',
       analyzeRisk: 'Analyser le Profil de Risque',
       analyzing: 'Analyse en cours...',
+      selectAtLeastOne: 'Veuillez sélectionner au moins une condition ou un symptôme.',
       conditionsList: {
         diabetes: 'Diabète',
         hypertension: 'Hypertension',
@@ -606,11 +632,15 @@ export const translations: Record<Language, Translations> = {
       ecg: 'Données ECG (PDF, Images)',
       analyzing: 'Analyse en cours...',
       analyzed: 'Analyse terminée',
-      remove: 'Supprimer',
-    },
+      remove: 'Supprimer',      signInToAnalyze: 'Connectez-vous pour analyser des fichiers',    },
     graph: {
       title: 'Réseau des Maladies Cardiovasculaires',
       legend: 'Niveaux de Risque',
+      status: 'État du Graphe',
+      nodesLabel: 'Nœuds',
+      edgesLabel: 'Arêtes',
+      errorLabel: 'Erreur',
+      neutralLabel: 'Inactif',
       riskLevels: {
         high: 'Risque Élevé',
         medium: 'Risque Moyen',
@@ -627,6 +657,7 @@ export const translations: Record<Language, Translations> = {
     predictions: {
       title: 'Prédictions de Risque',
       analyzing: 'Analyse des données patient...',
+      runningModel: "Exécution du modèle GNN",
       noPredictions: "Les prédictions apparaîtront ici après l'analyse",
       probability: 'Probabilité',
       pathway: 'Voie de Progression',
@@ -635,6 +666,14 @@ export const translations: Record<Language, Translations> = {
       medium: 'Moyen',
       low: 'Faible',
       reasoning: 'Raisonnement Clinique',
+      foundRiskFactors: 'Trouvé {count} facteurs de risque potentiels.',
+    },
+    diseases: {
+      hypertension: 'Hypertension',
+      sleep_apnea: 'Apnée du sommeil',
+      heart_disease: 'Maladie cardiaque',
+      stroke: 'AVC',
+      diabetes: 'Diabète'
     },
     recommendations: {
       title: 'Recommandations Personnalisées',
@@ -653,6 +692,7 @@ export const translations: Record<Language, Translations> = {
     },
     chat: {
       title: 'Assistant IA Médical',
+      subtitle: 'Expliquez les prédictions & les relations du graphe',
       placeholder: 'Posez une question sur vos résultats...',
       welcome: "Bonjour ! Je suis votre assistant médical IA. Je peux vous aider à comprendre les prédictions de maladies, expliquer les relations dans le graphe médical et fournir le contexte des recommandations. Comment puis-je vous aider ?",
       typing: 'Réflexion...',
@@ -790,6 +830,7 @@ export const translations: Record<Language, Translations> = {
       symptomsSelected: 'عرض مختار',
       analyzeRisk: 'تحليل ملف المخاطر',
       analyzing: 'جاري التحليل...',
+      selectAtLeastOne: 'يرجى تحديد حالة واحدة على الأقل أو عرض واحد.',
       conditionsList: {
         diabetes: 'السكري',
         hypertension: 'ارتفاع ضغط الدم',
@@ -838,10 +879,16 @@ export const translations: Record<Language, Translations> = {
       analyzing: 'جاري التحليل...',
       analyzed: 'اكتمل التحليل',
       remove: 'إزالة',
+      signInToAnalyze: 'سجل الدخول لتحليل الملفات',
     },
     graph: {
       title: 'شبكة أمراض القلب والأوعية الدموية',
       legend: 'مستويات الخطر',
+      status: 'حالة الرسم البياني',
+      nodesLabel: 'العُقد',
+      edgesLabel: 'الحواف',
+      errorLabel: 'خطأ',
+      neutralLabel: 'غير نشط',
       riskLevels: {
         high: 'خطر عالي',
         medium: 'خطر متوسط',
@@ -858,6 +905,7 @@ export const translations: Record<Language, Translations> = {
     predictions: {
       title: 'تنبؤات المخاطر',
       analyzing: 'جاري تحليل بيانات المريض...',
+      runningModel: 'تشغيل نموذج التنبؤ GNN',
       noPredictions: 'ستظهر التنبؤات هنا بعد التحليل',
       probability: 'الاحتمالية',
       pathway: 'مسار التطور',
@@ -866,7 +914,16 @@ export const translations: Record<Language, Translations> = {
       medium: 'متوسط',
       low: 'منخفض',
       reasoning: 'التفسير السريري',
+      foundRiskFactors: 'تم العثور على {count} عامل خطر محتمل.',
     },
+    diseases: {
+      hypertension: 'ارتفاع ضغط الدم',
+      sleep_apnea: 'انقطاع النفس النومي',
+      heart_disease: 'أمراض القلب',
+      stroke: 'سكتة دماغية',
+      diabetes: 'السكري'
+    },
+
     recommendations: {
       title: 'التوصيات المخصصة',
       noRecommendations: 'ستظهر التوصيات هنا بعد التحليل',
@@ -884,6 +941,7 @@ export const translations: Record<Language, Translations> = {
     },
     chat: {
       title: 'مساعد الذكاء الاصطناعي الطبي',
+      subtitle: 'اشرح التنبؤات وعلاقات الرسم البياني',
       placeholder: 'اسأل عن نتائجك...',
       welcome: 'مرحباً! أنا مساعدك الطبي بالذكاء الاصطناعي. يمكنني مساعدتك في فهم تنبؤات الأمراض وشرح العلاقات في الرسم البياني الطبي وتقديم السياق للتوصيات. كيف يمكنني مساعدتك اليوم؟',
       typing: 'جاري التفكير...',

@@ -1,4 +1,5 @@
 import { AlertTriangle, TrendingUp, Shield, Activity } from 'lucide-react';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface Prediction {
   disease: string;
@@ -13,6 +14,13 @@ interface PredictionResultsProps {
 }
 
 export const PredictionResults = ({ predictions, isAnalyzing }: PredictionResultsProps) => {
+  const { t } = useLanguage();
+  const riskLabels = {
+    high: t.predictions.high,
+    medium: t.predictions.medium,
+    low: t.predictions.low,
+  } as const;
+
   if (isAnalyzing) {
     return (
       <div className="glass-effect rounded-xl p-8 flex flex-col items-center justify-center min-h-[300px]">
@@ -20,8 +28,8 @@ export const PredictionResults = ({ predictions, isAnalyzing }: PredictionResult
           <div className="w-16 h-16 border-4 border-primary/30 rounded-full animate-spin border-t-primary"></div>
           <Activity className="w-6 h-6 text-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         </div>
-        <p className="mt-4 text-muted-foreground font-medium">Analyzing medical graph...</p>
-        <p className="text-sm text-muted-foreground/70">Running GNN prediction model</p>
+        <p className="mt-4 text-muted-foreground font-medium">{t.predictions.analyzing}</p>
+        <p className="text-sm text-muted-foreground/70">{t.predictions.runningModel}</p>
       </div>
     );
   }
@@ -30,9 +38,9 @@ export const PredictionResults = ({ predictions, isAnalyzing }: PredictionResult
     return (
       <div className="glass-effect rounded-xl p-8 flex flex-col items-center justify-center min-h-[300px] text-center">
         <Shield className="w-12 h-12 text-primary/50 mb-4" />
-        <h3 className="font-display text-lg font-semibold mb-2">No Analysis Yet</h3>
+        <h3 className="font-display text-lg font-semibold mb-2">{t.predictions.noPredictions}</h3>
         <p className="text-muted-foreground text-sm max-w-sm">
-          Select conditions from the patient's medical record and click "Analyze Risk Profile" to see predictions.
+          {t.predictions.noPredictions}
         </p>
       </div>
     );
@@ -42,7 +50,7 @@ export const PredictionResults = ({ predictions, isAnalyzing }: PredictionResult
     <div className="space-y-4">
       <div className="flex items-center gap-2 mb-4">
         <TrendingUp className="w-5 h-5 text-primary" />
-        <h3 className="font-display font-semibold text-lg">Risk Predictions</h3>
+        <h3 className="font-display font-semibold text-lg">{t.predictions.title}</h3>
       </div>
 
       {predictions.map((prediction, index) => (
@@ -67,14 +75,25 @@ export const PredictionResults = ({ predictions, isAnalyzing }: PredictionResult
                 `} />
               </div>
               <div>
-                <h4 className="font-display font-semibold">{prediction.disease}</h4>
+                <h4 className="font-display font-semibold">{
+                  (() => {
+                    const normalizedKey = prediction.disease.toLowerCase().replace(/\s+/g, '_');
+                    // If a localized disease label exists in translations, use it
+                    try {
+                      const localized = (t as any).diseases?.[normalizedKey];
+                      return localized || prediction.disease;
+                    } catch {
+                      return prediction.disease;
+                    }
+                  })()
+                }</h4>
                 <p className={`
                   text-xs font-medium uppercase tracking-wider
                   ${prediction.risk === 'high' ? 'risk-high' : ''}
                   ${prediction.risk === 'medium' ? 'risk-medium' : ''}
                   ${prediction.risk === 'low' ? 'risk-low' : ''}
                 `}>
-                  {prediction.risk} risk
+                  {t.predictions.riskLevel}: {riskLabels[prediction.risk]}
                 </p>
               </div>
             </div>
@@ -82,7 +101,7 @@ export const PredictionResults = ({ predictions, isAnalyzing }: PredictionResult
               <span className="text-2xl font-display font-bold text-foreground">
                 {Math.round(prediction.probability * 100)}%
               </span>
-              <p className="text-xs text-muted-foreground">probability</p>
+              <p className="text-xs text-muted-foreground">{t.predictions.probability}</p>
             </div>
           </div>
 
@@ -102,17 +121,35 @@ export const PredictionResults = ({ predictions, isAnalyzing }: PredictionResult
           {/* Pathway */}
           {prediction.pathway.length > 0 && (
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs text-muted-foreground">Pathway:</span>
-              {prediction.pathway.map((step, i) => (
-                <span key={i} className="flex items-center gap-1">
-                  <span className="text-xs px-2 py-0.5 bg-secondary rounded text-foreground">
-                    {step}
+              <span className="text-xs text-muted-foreground">{t.predictions.pathway}:</span>
+              {prediction.pathway.map((step, i) => {
+                const label = (() => {
+                  const normalized = step.toLowerCase().trim();
+                  // Edge type tokens
+                  if (normalized === 'risk factor' || normalized === 'risk_factor') return t.graph.edgeTypes.riskFactor;
+                  if (normalized === 'comorbidity') return t.graph.edgeTypes.comorbidity;
+                  if (normalized === 'disease progression' || normalized === 'progression') return t.graph.edgeTypes.progression;
+                  // Try mapping disease names via translations (normalize spaces -> underscore)
+                  const diseaseKey = normalized.replace(/\s+/g, '_');
+                  try {
+                    const diseaseLabel = (t as any).diseases?.[diseaseKey];
+                    if (diseaseLabel) return diseaseLabel;
+                  } catch {
+                    // ignore
+                  }
+                  return step;
+                })();
+                return (
+                  <span key={i} className="flex items-center gap-1">
+                    <span className="text-xs px-2 py-0.5 bg-secondary rounded text-foreground">
+                      {label}
+                    </span>
+                    {i < prediction.pathway.length - 1 && (
+                      <span className="text-primary">→</span>
+                    )}
                   </span>
-                  {i < prediction.pathway.length - 1 && (
-                    <span className="text-primary">→</span>
-                  )}
-                </span>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
