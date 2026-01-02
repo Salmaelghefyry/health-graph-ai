@@ -80,7 +80,7 @@ export const Recommendations = ({ recommendations }: RecommendationsProps) => {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <h4 className="font-display font-semibold text-foreground">{rec.title}</h4>
-                    <span className="text-xs px-2 py-0.5 bg-secondary rounded-full text-muted-foreground">
+                    <span className="px-2 py-0.5 text-xs bg-white text-foreground border border-border rounded shadow-sm">
                       {typeLabels[rec.type]}
                     </span>
                   </div>

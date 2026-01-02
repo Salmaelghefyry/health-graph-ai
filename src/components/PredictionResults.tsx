@@ -141,7 +141,7 @@ export const PredictionResults = ({ predictions, isAnalyzing }: PredictionResult
                 })();
                 return (
                   <span key={i} className="flex items-center gap-1">
-                    <span className="text-xs px-2 py-0.5 bg-secondary rounded text-foreground">
+                    <span className="text-xs px-2 py-0.5 bg-white text-foreground border border-border rounded shadow-sm">
                       {label}
                     </span>
                     {i < prediction.pathway.length - 1 && (

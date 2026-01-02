@@ -272,7 +272,11 @@ export const MedicalFileUpload = ({ onAnalysisComplete }: MedicalFileUploadProps
                           {file.analysis.confidence.toUpperCase()}
                         </span>
                         {' '}&middot;{' '}
-                        {file.analysis.summary}
+                        {(() => {
+                          const raw = file.analysis.summary || '';
+                          // Remove markdown fences and excessive whitespace
+                          return raw.replace(/```(?:json)?\s*/gi, '').replace(/```/g, '').trim();
+                        })()}
                       </p>
                       
                       {file.analysis.cardiovascularIndicators.detected && (
@@ -289,13 +293,13 @@ export const MedicalFileUpload = ({ onAnalysisComplete }: MedicalFileUploadProps
                           {file.analysis.riskFactors.slice(0, 3).map((factor, i) => (
                             <span 
                               key={i}
-                              className="px-2 py-0.5 text-xs bg-warning/20 text-warning rounded-full"
+                              className="px-2 py-0.5 text-xs bg-white text-foreground border border-border rounded shadow-sm"
                             >
                               {factor}
                             </span>
                           ))}
                           {file.analysis.riskFactors.length > 3 && (
-                            <span className="px-2 py-0.5 text-xs bg-muted text-muted-foreground rounded-full">
+                            <span className="px-2 py-0.5 text-xs bg-white text-foreground border border-border rounded shadow-sm">
                               +{file.analysis.riskFactors.length - 3} more
                             </span>
                           )}

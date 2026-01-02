@@ -35,6 +35,8 @@ export interface Translations {
     female: string;
     pregnant: string;
     menopause: string;
+    bloodType: string;
+    iDontKnow: string;
     lifestyle: string;
     smokingStatus: string;
     never: string;
@@ -285,6 +287,8 @@ export const translations: Record<Language, Translations> = {
       female: 'Female',
       pregnant: 'Pregnant',
       menopause: 'Menopause',
+      bloodType: 'Blood Type',
+      iDontKnow: "I don't know",
       lifestyle: 'Lifestyle Factors',
       smokingStatus: 'Smoking Status',
       never: 'Never',
@@ -533,6 +537,8 @@ export const translations: Record<Language, Translations> = {
       female: 'Femme',
       pregnant: 'Enceinte',
       menopause: 'Ménopause',
+      bloodType: 'Groupe Sanguin',
+      iDontKnow: "Je ne sais pas",
       lifestyle: 'Mode de Vie',
       smokingStatus: 'Statut Tabagique',
       never: 'Jamais',
@@ -779,6 +785,8 @@ export const translations: Record<Language, Translations> = {
       female: 'أنثى',
       pregnant: 'حامل',
       menopause: 'سن اليأس',
+      bloodType: 'فصيلة الدم',
+      iDontKnow: 'لا أعرف',
       lifestyle: 'نمط الحياة',
       smokingStatus: 'حالة التدخين',
       never: 'أبداً',

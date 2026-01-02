@@ -194,7 +194,7 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
             >
               <div className={`
                 shrink-0 w-8 h-8 rounded-lg flex items-center justify-center
-                ${message.role === 'user' ? 'bg-primary/20' : 'bg-secondary'}
+                ${message.role === 'user' ? 'bg-primary/20' : 'bg-gray-100'}
               `}>
                 {message.role === 'user' ? (
                   <User className="w-4 h-4 text-primary" />
@@ -206,7 +206,7 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
                 max-w-[75%] rounded-xl px-4 py-2.5
                 ${message.role === 'user' 
                   ? 'bg-primary text-primary-foreground' 
-                  : 'bg-secondary text-foreground'
+                  : 'bg-gray-100 text-foreground'
                 }
               `}>
                 <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
@@ -216,10 +216,10 @@ export const ChatAssistant = ({ activeConditions, predictions }: ChatAssistantPr
           
           {isTyping && messages[messages.length - 1]?.content === '' && (
             <div className="flex gap-3">
-              <div className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center bg-secondary">
+              <div className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center bg-gray-100">
                 <Bot className="w-4 h-4 text-primary" />
               </div>
-              <div className="bg-secondary rounded-xl px-4 py-2.5">
+              <div className="bg-gray-100 rounded-xl px-4 py-2.5">
                 <div className="flex gap-1">
                   <span className="w-2 h-2 bg-primary/50 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
                   <span className="w-2 h-2 bg-primary/50 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>

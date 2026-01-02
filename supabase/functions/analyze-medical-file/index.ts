@@ -177,13 +177,38 @@ Répondez en format JSON avec cette structure:
 
     // Parse the JSON response
     let analysis;
+
+    const extractJson = (text: string): string | null => {
+      // Match ```json ... ``` or ``` ... ``` with optional whitespace and language tag
+      const fenced = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
+      if (fenced && fenced[1]) return fenced[1].trim();
+
+      // If no fenced block, try to extract the first balanced JSON object using brace counting
+      const start = text.indexOf('{');
+      if (start === -1) return null;
+      let depth = 0;
+      for (let i = start; i < text.length; i++) {
+        const ch = text[i];
+        if (ch === '{') depth++;
+        else if (ch === '}') depth--;
+        if (depth === 0) {
+          return text.slice(start, i + 1);
+        }
+      }
+      return null;
+    };
+
     try {
-      // Extract JSON from response (handle markdown code blocks)
-      const jsonMatch = content.match(/```json\n?([\s\S]*?)\n?```/) || content.match(/\{[\s\S]*\}/);
-      const jsonStr = jsonMatch ? (jsonMatch[1] || jsonMatch[0]) : content;
-      analysis = JSON.parse(jsonStr);
+      const jsonFragment = extractJson(content);
+      if (jsonFragment) {
+        analysis = JSON.parse(jsonFragment);
+      } else {
+        throw new Error('No JSON fragment found');
+      }
     } catch (parseError) {
       console.error('Failed to parse AI response:', parseError);
+      // If parsing fails, include a cleaned summary without markdown fences
+      const cleaned = content.replace(/```(?:json)?\s*/gi, '').replace(/```/g, '').trim();
       analysis = {
         imageType: 'Unknown',
         findings: ['Unable to fully analyze the image'],
@@ -192,7 +217,7 @@ Répondez en format JSON avec cette structure:
         abnormalities: [],
         confidence: 'low',
         recommendations: ['Please consult with a healthcare professional'],
-        summary: content.substring(0, 500)
+        summary: cleaned.substring(0, 500)
       };
     }
 

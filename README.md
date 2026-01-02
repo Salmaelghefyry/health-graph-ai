@@ -51,12 +51,12 @@ You can also view/edit this flow as a Mermaid flowchart:
 
 ```mermaid
 flowchart LR
-  Browser[Browser (React / Vite)]
-  Browser --> Frontend[Frontend App]
-  Frontend -->|Invokes| Functions[Supabase Edge Functions]
-  Functions --> AI[AI Gateway / LLM & Vision]
-  Functions --> DB[Supabase Postgres]
-  Frontend --> Auth[Supabase Auth]
+  Browser["Browser (React / Vite)"]
+  Browser --> Frontend["Frontend App"]
+  Frontend -->|Invokes| Functions["Supabase Edge Functions"]
+  Functions --> AI["AI Gateway / LLM & Vision"]
+  Functions --> DB["Supabase Postgres"]
+  Frontend --> Auth["Supabase Auth"]
   Auth --> Functions
 ```
 
@@ -68,11 +68,11 @@ A small example in Mermaid format:
 
 ```mermaid
 graph LR
-  obesity --> diabetes
-  obesity --> hypertension
-  diabetes --> heart_disease
-  hypertension --> stroke
-  diabetes --> kidney_disease
+  obesity["Obesity"] --> diabetes["Diabetes"]
+  obesity["Obesity"] --> hypertension["Hypertension"]
+  diabetes["Diabetes"] --> heart_disease["Heart Disease"]
+  hypertension["Hypertension"] --> stroke["Stroke"]
+  diabetes["Diabetes"] --> kidney_disease["Kidney Disease"]
 ```
 ### Models & reasoning
 - GNN-style reasoning: We represent disease relationships as a graph (nodes: diseases / symptoms; edges: risk_factor, progression, comorbidity). The server-side code builds prompts using this graph to produce structured predictions and pathways. The implementation is designed to be explainable — each prediction includes reasoning and a pathway.

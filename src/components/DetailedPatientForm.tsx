@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { 
   User, Calendar, Activity, Heart, Droplets, Scale, 
@@ -24,19 +24,8 @@ interface PatientFormData {
   pregnant: boolean;
   menopause: boolean;
   
-  // Vital Signs
-  systolicBP: number | undefined;
-  diastolicBP: number | undefined;
-  heartRate: number | undefined;
-  
-  // Lab Values
-  bloodSugar: number | undefined; // mg/dL (fasting)
-  hba1c: number | undefined; // %
-  totalCholesterol: number | undefined; // mg/dL
-  ldlCholesterol: number | undefined; // mg/dL
-  hdlCholesterol: number | undefined; // mg/dL
-  triglycerides: number | undefined; // mg/dL
-  creatinine: number | undefined; // mg/dL
+  // Blood Type
+  bloodType: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-' | undefined;
   
   // Physical Measurements
   weight: number | undefined; // kg
@@ -63,6 +52,8 @@ export const DetailedPatientForm = ({
   onFileAnalysis 
 }: DetailedPatientFormProps) => {
   const { t, isRTL } = useLanguage();
+  const iDontKnow = (t.form as any).iDontKnow ?? "I don't know";
+  const bloodTypeLabel = (t.form as any).bloodType ?? 'Blood Type';
   const [expandedSections, setExpandedSections] = useState<string[]>(['personal', 'vitals']);
   
   const [formData, setFormData] = useState<PatientFormData>({
@@ -75,16 +66,7 @@ export const DetailedPatientForm = ({
     physicalActivity: undefined,
     pregnant: false,
     menopause: false,
-    systolicBP: undefined,
-    diastolicBP: undefined,
-    heartRate: undefined,
-    bloodSugar: undefined,
-    hba1c: undefined,
-    totalCholesterol: undefined,
-    ldlCholesterol: undefined,
-    hdlCholesterol: undefined,
-    triglycerides: undefined,
-    creatinine: undefined,
+    bloodType: undefined,
     weight: undefined,
     height: undefined,
     waistCircumference: undefined,
@@ -109,6 +91,20 @@ export const DetailedPatientForm = ({
 
   const toggleArrayItem = (field: 'conditions' | 'symptoms' | 'familyHistory', item: string) => {
     const current = formData[field];
+
+    // If user selects 'unknown', make it mutually exclusive with other selections
+    if (item === 'unknown') {
+      const newArray = current.includes('unknown') ? current.filter(i => i !== 'unknown') : ['unknown'];
+      updateField(field, newArray);
+      return;
+    }
+
+    // If a specific item is selected but 'unknown' is present, replace it
+    if (current.includes('unknown')) {
+      updateField(field, [item]);
+      return;
+    }
+
     const newArray = current.includes(item)
       ? current.filter(i => i !== item)
       : [...current, item];
@@ -206,28 +202,57 @@ export const DetailedPatientForm = ({
     min?: number;
     max?: number;
     step?: number;
-  }) => (
-    <div className="space-y-1.5">
-      <label className="text-sm text-muted-foreground">{label}</label>
-      <div className="relative">
-        <input
-          type={type}
-          value={value ?? ''}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          min={min}
-          max={max}
-          step={step}
-          className={`w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all ${unit ? (isRTL ? 'pl-12' : 'pr-12') : ''}`}
-        />
-        {unit && (
-          <span className={`absolute ${isRTL ? 'left-3' : 'right-3'} top-1/2 -translate-y-1/2 text-sm text-muted-foreground`}>
-            {unit}
-          </span>
-        )}
+  }) => {
+    // Local input state to avoid rapid parent updates causing focus loss
+    const [localValue, setLocalValue] = useState<string>('');
+    const timeoutRef = useRef<number | null>(null);
+
+    useEffect(() => {
+      // Keep local value in sync when parent updates (e.g., reset)
+      setLocalValue('' + (value ?? ''));
+    }, [value]);
+
+    useEffect(() => {
+      return () => {
+        if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+      };
+    }, []);
+
+    const emit = (next: string) => {
+      setLocalValue(next);
+      // Debounce forwarding to parent to avoid frequent re-renders
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+      timeoutRef.current = window.setTimeout(() => {
+        onChange(next);
+        timeoutRef.current = null;
+      }, 250) as unknown as number;
+    };
+
+    return (
+      <div className="space-y-1.5">
+        <label className="text-sm text-muted-foreground">{label}</label>
+        <div className="relative">
+          <input
+            type={type}
+            value={localValue}
+            onChange={(e) => emit(e.target.value)}
+            onBlur={() => onChange(localValue)}
+            placeholder={placeholder}
+            min={min}
+            max={max}
+            step={step}
+            className={`w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all ${unit ? (isRTL ? 'pl-12' : 'pr-12') : ''}`}
+          />
+          {unit && (
+            <span className={`absolute ${isRTL ? 'left-3' : 'right-3'} top-1/2 -translate-y-1/2 text-sm text-muted-foreground`}>
+              {unit}
+            </span>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
+
 
   const SelectButton = ({ 
     selected, 
@@ -244,7 +269,7 @@ export const DetailedPatientForm = ({
       className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
         selected 
           ? 'bg-primary text-primary-foreground shadow-glow' 
-          : 'bg-secondary/50 text-foreground hover:bg-secondary border border-border'
+          : 'bg-white text-foreground border border-border shadow-sm hover:bg-secondary/50'
       }`}
     >
       {children}
@@ -266,7 +291,7 @@ export const DetailedPatientForm = ({
       className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
         selected 
           ? 'bg-primary text-primary-foreground' 
-          : 'bg-secondary/50 text-foreground hover:bg-secondary border border-border'
+          : 'bg-white text-foreground border border-border shadow-sm hover:bg-secondary/50'
       }`}
     >
       {children}
@@ -318,6 +343,12 @@ export const DetailedPatientForm = ({
                   >
                     {t.form.female}
                   </SelectButton>
+                  <SelectButton
+                    selected={formData.sex === undefined}
+                    onClick={() => updateField('sex', undefined)}
+                  >
+                    {iDontKnow}
+                  </SelectButton>
                 </div>
               </div>
             </div>
@@ -344,6 +375,28 @@ export const DetailedPatientForm = ({
                 </label>
               </div>
             )}
+
+            {/* Blood Type */}
+            <div className="space-y-2">
+              <label className="text-sm text-muted-foreground">{bloodTypeLabel}</label>
+              <div className="flex flex-wrap gap-2">
+                {['A+','A-','B+','B-','AB+','AB-','O+','O-'].map(bt => (
+                  <SelectButton
+                    key={bt}
+                    selected={formData.bloodType === bt}
+                    onClick={() => updateField('bloodType', bt as any)}
+                  >
+                    {bt}
+                  </SelectButton>
+                ))}
+                <SelectButton
+                  selected={formData.bloodType === undefined}
+                  onClick={() => updateField('bloodType', undefined)}
+                >
+                  {iDontKnow}
+                </SelectButton>
+              </div>
+            </div>
           </div>
         )}
       </div>
@@ -459,51 +512,7 @@ export const DetailedPatientForm = ({
         )}
       </div>
 
-      {/* Vital Signs */}
-      <div className="glass-effect rounded-xl overflow-hidden">
-        <SectionHeader id="vitals" icon={Heart} title={t.form.vitalSigns} />
-        {expandedSections.includes('vitals') && (
-          <div className="p-4 space-y-4">
-            {/* Blood Pressure */}
-            <div className="space-y-2">
-              <label className="text-sm text-muted-foreground">{t.form.bloodPressure}</label>
-              <div className="grid grid-cols-2 gap-4">
-                <InputField
-                  label={t.form.systolic}
-                  value={formData.systolicBP}
-                  onChange={(val) => updateField('systolicBP', val ? parseInt(val) : undefined)}
-                  type="number"
-                  placeholder="120"
-                  unit="mmHg"
-                  min={60}
-                  max={250}
-                />
-                <InputField
-                  label={t.form.diastolic}
-                  value={formData.diastolicBP}
-                  onChange={(val) => updateField('diastolicBP', val ? parseInt(val) : undefined)}
-                  type="number"
-                  placeholder="80"
-                  unit="mmHg"
-                  min={40}
-                  max={150}
-                />
-              </div>
-            </div>
 
-            <InputField
-              label={t.form.heartRate}
-              value={formData.heartRate}
-              onChange={(val) => updateField('heartRate', val ? parseInt(val) : undefined)}
-              type="number"
-              placeholder="72"
-              unit={t.form.bpm}
-              min={30}
-              max={200}
-            />
-          </div>
-        )}
-      </div>
 
       {/* Physical Measurements */}
       <div className="glass-effect rounded-xl overflow-hidden">
@@ -562,90 +571,7 @@ export const DetailedPatientForm = ({
         )}
       </div>
 
-      {/* Lab Values */}
-      <div className="glass-effect rounded-xl overflow-hidden">
-        <SectionHeader id="lab" icon={Droplets} title={t.form.labValues} />
-        {expandedSections.includes('lab') && (
-          <div className="p-4 space-y-4">
-            {/* Glucose */}
-            <div className="space-y-2">
-              <label className="text-xs font-medium text-primary uppercase tracking-wider">{t.form.glucoseMetabolism}</label>
-              <div className="grid grid-cols-2 gap-4">
-                <InputField
-                  label={t.form.fastingBloodSugar}
-                  value={formData.bloodSugar}
-                  onChange={(val) => updateField('bloodSugar', val ? parseFloat(val) : undefined)}
-                  type="number"
-                  placeholder="100"
-                  unit="mg/dL"
-                  step={0.1}
-                />
-                <InputField
-                  label={t.form.hba1c}
-                  value={formData.hba1c}
-                  onChange={(val) => updateField('hba1c', val ? parseFloat(val) : undefined)}
-                  type="number"
-                  placeholder="5.5"
-                  unit="%"
-                  step={0.1}
-                  min={3}
-                  max={15}
-                />
-              </div>
-            </div>
 
-            {/* Lipids */}
-            <div className="space-y-2">
-              <label className="text-xs font-medium text-primary uppercase tracking-wider">{t.form.lipidProfile}</label>
-              <div className="grid grid-cols-2 gap-4">
-                <InputField
-                  label={t.form.totalCholesterol}
-                  value={formData.totalCholesterol}
-                  onChange={(val) => updateField('totalCholesterol', val ? parseFloat(val) : undefined)}
-                  type="number"
-                  placeholder="200"
-                  unit="mg/dL"
-                />
-                <InputField
-                  label={t.form.ldlCholesterol}
-                  value={formData.ldlCholesterol}
-                  onChange={(val) => updateField('ldlCholesterol', val ? parseFloat(val) : undefined)}
-                  type="number"
-                  placeholder="100"
-                  unit="mg/dL"
-                />
-                <InputField
-                  label={t.form.hdlCholesterol}
-                  value={formData.hdlCholesterol}
-                  onChange={(val) => updateField('hdlCholesterol', val ? parseFloat(val) : undefined)}
-                  type="number"
-                  placeholder="50"
-                  unit="mg/dL"
-                />
-                <InputField
-                  label={t.form.triglycerides}
-                  value={formData.triglycerides}
-                  onChange={(val) => updateField('triglycerides', val ? parseFloat(val) : undefined)}
-                  type="number"
-                  placeholder="150"
-                  unit="mg/dL"
-                />
-              </div>
-            </div>
-
-            {/* Kidney */}
-            <InputField
-              label={t.form.creatinine}
-              value={formData.creatinine}
-              onChange={(val) => updateField('creatinine', val ? parseFloat(val) : undefined)}
-              type="number"
-              placeholder="1.0"
-              unit="mg/dL"
-              step={0.01}
-            />
-          </div>
-        )}
-      </div>
 
       {/* Medical History */}
       <div className="glass-effect rounded-xl overflow-hidden">
@@ -665,6 +591,12 @@ export const DetailedPatientForm = ({
                     {t.form.conditionsList[key as keyof typeof t.form.conditionsList]}
                   </TagButton>
                 ))}
+                <TagButton
+                  selected={formData.conditions.includes('unknown')}
+                  onClick={() => toggleArrayItem('conditions', 'unknown')}
+                >
+                  {t.form.iDontKnow}
+                </TagButton>
               </div>
             </div>
 
@@ -681,6 +613,12 @@ export const DetailedPatientForm = ({
                     {t.form.familyHistoryList[key as keyof typeof t.form.familyHistoryList]}
                   </TagButton>
                 ))}
+                <TagButton
+                  selected={formData.familyHistory.includes('unknown')}
+                  onClick={() => toggleArrayItem('familyHistory', 'unknown')}
+                >
+                  {t.form.iDontKnow}
+                </TagButton>
               </div>
             </div>
           </div>
@@ -702,6 +640,12 @@ export const DetailedPatientForm = ({
                   {t.form.symptomsList[key as keyof typeof t.form.symptomsList]}
                 </TagButton>
               ))}
+              <TagButton
+                selected={formData.symptoms.includes('unknown')}
+                onClick={() => toggleArrayItem('symptoms', 'unknown')}
+              >
+                {t.form.iDontKnow}
+              </TagButton>
             </div>
           </div>
         )}
